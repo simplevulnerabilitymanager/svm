@@ -19,10 +19,10 @@ set Timestamp=%9
 rem set PortList=9ddce1ae-57e7-11e1-b13c-406186ea4fc5
 set Filter_id=0dc76912-ea28-4d85-9794-bb9c31d2caef
 
-set Proyecto=%Proyecto:"=%
 set IP=%IP:"=%
+set Proyecto=%Proyecto:"=%
 set Documentacion=%Documentacion:"=%
-set Documentacion="%Documentacion%\OpenvasReport - %Proyecto% - %Timestamp%.html"
+set Documentacion="%Documentacion%\OpenvasReport - %Timestamp%.html"
 
 @title=[OpenVas Scan] - %Proyecto%
 

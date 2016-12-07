@@ -11,22 +11,12 @@ set Documentacion=%9
 
 set Documentacion=%Documentacion:"=%
 set Proyecto=%Proyecto:"=%
-set Proyecto=%Proyecto:^^~=%
-set Proyecto=%Proyecto:^^&=%
-set Proyecto=%Proyecto:^*=%
-set Proyecto=%Proyecto::=%
-set Proyecto=%Proyecto:^<=%
-set Proyecto=%Proyecto:^>=%
-set Proyecto=%Proyecto:?=%
-set Proyecto=%Proyecto:^|=%
-set Proyecto=%Proyecto:^==%
-set Proyecto=%Proyecto:$=%
-set Proyecto=%Proyecto:^^=%
-set Timestamp=%Timestamp:"=%
-set Documentacion="%Documentacion%\NessusReport - %Proyecto% - %Timestamp%.html"
+
+set Documentacion="%Documentacion%\NessusReport - %Timestamp%.html"
 
 @title=[Nessus Scan] - %Proyecto%
 
+rem Detect Service Up
 "%~dp0curl.exe" -s -k https://%Server%:%Port%/ > NUL
 if %ERRORLEVEL% neq 0 ( echo ---Nessus Service no iniciado. Loguearse por ssh a %Server% y ejecutar: && echo /etc/init.d/nessusd start && pause && exit )
 
@@ -70,7 +60,7 @@ set /p STATUS_REPORT=<"%TEMP%\nessus_scan_status_report_%Timestamp%.txt"
 if %STATUS_REPORT% == "null" ( echo ---Error--- && pause && exit )
 if %STATUS_REPORT% == "ready" ( echo: ) else ( ping -n 11 127.0.0.1 > NUL && echo . && goto :while2 )
 
-
+rem Download Doc File
 "%~dp0curl.exe" -s -k https://%Server%:%Port%/scans/%ID_SCAN%/export/%FILE%/download?token=%TOKEN% --output %Documentacion%
 
 rem Logout

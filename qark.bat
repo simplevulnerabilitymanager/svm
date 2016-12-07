@@ -8,7 +8,6 @@ set Server=%6
 set Username=%7
 set Password=%8
 
-
 set PathAPK=%PathAPK:"=%
 set FileApk=%FileApk:"=%
 set DirApp=%DirApp:"=%
@@ -36,5 +35,4 @@ rem "%~dp0putty.exe" -C -ssh %Username%@%Server%
 
 echo %Documentacion%
 pause
-
 

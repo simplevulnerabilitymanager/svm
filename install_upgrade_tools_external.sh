@@ -24,7 +24,7 @@ apt-get install python-setuptools -y
 apt-get install gcc -y
 apt-get install awk -y
 
-gem update
+#gem update
 #Web Scan Tools (Arachni)
 cd
 apt-get install curl -y
@@ -105,7 +105,7 @@ if [ $? -ne 0 ] ; then
 	apt-key adv --recv-key --keyserver keyserver.ubuntu.com 3C453D244AA450E0
 	apt-get update
 	apt-get install greenbone-security-assistant -y	
-	apt-get install openvas-cli -y
+	apt-get install openvas-cli -y	
 	apt-get install openvas-manager -y
 	apt-get install openvas-scanner -y
 	openvas-mkcert
@@ -238,7 +238,10 @@ pip install --upgrade cryptography
 pip install --upgrade cffi
 pip install --upgrade pycparser
 cd
-git clone https://github.com/ajinabraham/Mobile-Security-Framework-MobSF
+
+# git clone https://github.com/ajinabraham/Mobile-Security-Framework-MobSF
+#wget https://github.com/ajinabraham/Mobile-Security-Framework-MobSF/archive/v0.9.3.tar.gz -O Mobile-Security-Framework-MobSF.tar.gz
+git clone https://github.com/ajinabraham/Mobile-Security-Framework-MobSF/tree/v0.9.3
 if [ $? -ne 0 ] ; then
 	cd Mobile-Security-Framework-MobSF
 	git pull

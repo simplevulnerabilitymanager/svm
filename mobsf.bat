@@ -1,4 +1,4 @@
-rem @echo off
+@echo off
 set PathAPK=%1
 set FileApk=%2
 set Timestamp=%3
@@ -29,25 +29,13 @@ set TOKEN=%TOKEN:'=%
 set TOKEN=%TOKEN:)=%
 set TOKEN=%TOKEN:;=%
 
-pause
-findstr /C:"csrfmiddlewaretoken" "%TEMP%\mobsf_token_1_%Timestamp%.txt" > "%TEMP%\mobsf_token_3_%Timestamp%.txt"
-set /p CSRFMIDDLE=<"%TEMP%\mobsf_token_3_%Timestamp%.txt"
-pause
-FOR /F "tokens=1-2" %%A IN ("%CSRFMIDDLE%") DO set CSRFMIDDLE=%%B
-set CSRFMIDDLE=%CSRFMIDDLE:'=%
-set CSRFMIDDLE=%CSRFMIDDLE:)=%
-set CSRFMIDDLE=%CSRFMIDDLE:;=%
-
-pause
-
 rem Peticion 2
-"%~dp0curl.exe" -k -X POST -b "%TEMP%\mobsf_auth_%Timestamp%.txt" -H "csrftoken: %TOKEN%" -H "Referer: %Server%" -F csrfmiddlewaretoken=%CSRFMIDDLE% -F file="@%PathAPK%" "%Server%/Upload/" | "%~dp0jq-win32.exe" .url > "%TEMP%\mobsf_json_%Timestamp%.txt"
+"%~dp0curl.exe" -k -X POST -b "%TEMP%\mobsf_auth_%Timestamp%.txt" -H "X-CSRFToken: %TOKEN%" -H "Referer: %Server%" -F file="@%PathAPK%" "%Server%/Upload/" | "%~dp0jq-win32.exe" .url > "%TEMP%\mobsf_json_%Timestamp%.txt"
 set /p requestId=<"%TEMP%\mobsf_json_%Timestamp%.txt"
 
 for /f "tokens=1,2,3 delims=:&" %%a in (%requestId%) do set getchecksum=%%c
 for /f "tokens=1,2 delims=:=" %%a in ("%getchecksum%") do set checksum=%%b
 
-pause
 rem Peticion 3
 "%~dp0curl.exe" -k -b "%TEMP%\mobsf_auth_%Timestamp%.txt" -H "Referer: %Server%" "%Server%/StaticAnalyzer/?name=%FileApk%&type=apk&checksum=%checksum%" > NUL
 
