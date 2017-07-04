@@ -1,4 +1,5 @@
 @echo off
+setlocal
 set burpsuite=%1
 set scheme=%2
 set fqdn=%3

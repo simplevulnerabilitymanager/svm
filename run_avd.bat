@@ -1,4 +1,5 @@
-rem @echo off
+@echo off
+setlocal
 set AndroidSDK=%1
 set AVDName=%2
 set Proxy=%3

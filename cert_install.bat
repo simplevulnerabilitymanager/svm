@@ -1,4 +1,5 @@
 @echo off
+setlocal
 set File=%1
 set Timestamp=%3
 

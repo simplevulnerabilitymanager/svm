@@ -1,4 +1,5 @@
 @echo off
+setlocal
 set DirApp=%1
 set PathAPK=%2
 set FileApk=%3

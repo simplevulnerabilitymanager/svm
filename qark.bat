@@ -1,4 +1,5 @@
 @echo off
+setlocal
 set DirApp=%1
 set PathAPK=%2
 set FileApk=%3
@@ -19,20 +20,20 @@ set Documentacion="%Documentacion%\QarkReport - %FileApk%_%Timestamp%.tar.gz"
 rem $git clone https://github.com/linkedin/qark
 "%~dp0pscp.exe" -l %Username% -pw %Password% -C "%PathAPK%" %Server%:"/tmp/%FileApk%_%Timestamp%.apk"
 "%~dp0pscp.exe" -l %Username% -pw %Password% -C "qark.sh" %Server%:"/tmp/qark.sh"
-"%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "tr -d '\15\32' < /tmp/qark.sh > %DirApp%/qark.sh"
+"%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "tr -d '\15\32' < /tmp/qark.sh > '%DirApp%/qark.sh'"
+"%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/qark.sh'"
 
-rem echo Ejecutar en el server %Server% el comando:
-rem echo cd "%DirApp%" ; chmod 755 ./qark.sh ; ./qark.sh "%DirApp%" "%FileApk%_%Timestamp%"
-rem echo Solo cuando termine, presione una tecla para obtener el reporte
+echo Ejecutar en el server %Server% el comando:
+echo cd "%DirApp%" ; chmod 755 qark.sh ; ./qark.sh "%DirApp%" "%FileApk%_%Timestamp%"
+echo Solo cuando termine, presione una tecla para obtener el reporte
+pause
+rem "%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "export TERM=xterm ; cd '%DirApp%' ; chmod 755 ./qark.sh ; ./qark.sh '%DirApp%' '%FileApk%_%Timestamp%'"
 
-rem "%~dp0putty.exe" -C -ssh %Username%@%Server%
-
-"%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "export TERM=xterm ; cd '%DirApp%' ; chmod 755 ./qark.sh ; ./qark.sh '%DirApp%' '%FileApk%_%Timestamp%'"
-
-"%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "cd '%DirApp%' ; tar -cvzf '/tmp/QarkReport - %FileApk%_%Timestamp%.tar.gz' '/tmp/%FileApk%_%Timestamp%.apk' 'Report_%FileApk%_%Timestamp%/' logs/ exploit/"
+"%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "cd '%DirApp%/qark' ; tar -cvzf '/tmp/QarkReport - %FileApk%_%Timestamp%.tar.gz' '/tmp/%FileApk%_%Timestamp%.apk' 'Report_%FileApk%_%Timestamp%/' logs/ exploit/"
 "%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/QarkReport - %FileApk%_%Timestamp%.tar.gz" %Documentacion%
-"%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/QarkReport - %FileApk%_%Timestamp%.tar.gz'"
+"%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/QarkReport - %FileApk%_%Timestamp%.tar.gz' '%DirApp%/qark.sh'"
 
 echo %Documentacion%
 pause
+
 

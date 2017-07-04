@@ -1,4 +1,5 @@
 @echo off
+setlocal
 set Proyecto=%1
 set URL=%2
 set Documentacion=%3

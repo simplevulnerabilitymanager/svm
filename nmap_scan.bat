@@ -1,4 +1,5 @@
 @echo off
+setlocal
 set Proyecto=%1
 set IP=%2
 set Timestamp=%3

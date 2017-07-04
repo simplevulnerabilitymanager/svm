@@ -1,4 +1,5 @@
 @echo off
+setlocal
 set Proyecto=%1
 set Netsparker=%2
 set URL=%3

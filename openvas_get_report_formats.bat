@@ -1,18 +1,20 @@
 @echo off
-set Server=%1
-set Port=%2
-set Username=%3
-set Password=%4
+setlocal
+set OpenvasServer=%1
+set OpenvasUsername=%3
+set OpenvasPassword=%4
+set OpenvasPort=%2
 set Timestamp=%5
 
-@title=[OpenVas] - Obteniendo "Format Report ID"
+@title=[OpenVAS] - Obteniendo "Format Report ID"
 
 rem http://docs.greenbone.net/API/OMP/omp.html#command_get_report_formats
-"%~dp0omp_cracked.exe" --host=%Server% --port=%Port% --username=%Username% --password=%Password% --xml="<get_report_formats />" 1>"%TEMP%\openvas_get_reports_formats_%Timestamp%.txt" 2>NUL
-findstr.exe /C:"OK" "%TEMP%\openvas_get_reports_formats_%Timestamp%.txt"
-if not %ERRORLEVEL% EQU 0 ( echo ---Error--- && pause && exit )
+"%~dp0omp_cracked.exe" --host=%OpenvasServer% --port=%OpenvasPort% --username=%OpenvasUsername% --password=%OpenvasPassword% --xml="<get_report_formats />" 1>"%TEMP%\openvas_report_formats_%Timestamp%.txt" 2>NUL
 
-"%~dp0xml.exe" fo "%TEMP%\openvas_get_reports_formats_%Timestamp%.txt" > "%TEMP%\openvas_get_reports_formats_%Timestamp%_indented.txt"
+findstr.exe /C:"OK" "%TEMP%\openvas_report_formats_%Timestamp%.txt"
+if %ERRORLEVEL% NEQ 0 ( echo ---Error--- && pause && exit )
 
-notepad.exe "%TEMP%\openvas_get_reports_formats_%Timestamp%_indented.txt"
+echo [Config] 1> "%TEMP%\openvas_report_formats_%Timestamp%.ini"
+type "%TEMP%\openvas_report_formats_%Timestamp%.txt" | "%~dp0xml.exe" sel -T -t -m "/get_report_formats_response/report_format" -o "ID" -v "position()"  -o "=" -v "@id" -n -o "Nombre" -v "position()"  -o "=\"" -v "name" -o "\"" -n -o "Extension" -v "position()"  -o "=\"" -v "extension" -o "\"" -n -o "Ultimo=" -v "last()" -n >> "%TEMP%\openvas_report_formats_%Timestamp%.ini"
 
+del /F "%TEMP%\openvas_report_formats_%Timestamp%.txt"

@@ -1,4 +1,5 @@
 @echo off
+setlocal
 set Server=%7
 set Username=%8
 set TempDirRemote=\Temp\

@@ -1,4 +1,5 @@
 @echo off
+setlocal
 rem https://www.youtube.com/watch?v=p2gpjTZgOa0
 set Proyecto=%1
 set Domains=%2

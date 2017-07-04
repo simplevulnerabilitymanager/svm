@@ -1,4 +1,5 @@
 @echo off
+setlocal
 set PathAPK=%1
 set FileAPK=%2
 set Timestamp=%3
