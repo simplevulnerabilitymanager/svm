@@ -19,7 +19,7 @@ set Documentacion="%Documentacion%\QarkReport - %FileApk%_%Timestamp%.tar.gz"
 
 rem $git clone https://github.com/linkedin/qark
 "%~dp0pscp.exe" -l %Username% -pw %Password% -C "%PathAPK%" %Server%:"/tmp/%FileApk%_%Timestamp%.apk"
-"%~dp0pscp.exe" -l %Username% -pw %Password% -C "qark.sh" %Server%:"/tmp/qark.sh"
+"%~dp0pscp.exe" -l %Username% -pw %Password% -C "%~dp0qark.sh" %Server%:"/tmp/qark.sh"
 "%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "tr -d '\15\32' < /tmp/qark.sh > '%DirApp%/qark.sh'"
 "%~dp0plink.exe" -P 22 -ssh -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/qark.sh'"
 

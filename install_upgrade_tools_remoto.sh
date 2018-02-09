@@ -2,6 +2,10 @@
 # Script que instala los programas que utiliza Simple Vulnerability Manager.
 # Instalar en Kali/Debian/Ubuntu
 # En Windows 10 con "Bash en Ubuntu en Windows" ejecutar antes:
+# sudo apt-get install openssh-server
+# cd /etc/ssh/
+# sudo /usr/bin/ssh-keygen -A
+# sudo service ssh --full-restart
 # sc stop SshProxy
 # sc stop SshBroker
 # Luego modificar
@@ -37,7 +41,7 @@ apt-get install python-setuptools -y
 apt-get install gcc -y
 apt-get install awk -y
 apt-get install xmlstarlet -y
-apt-get install basez -y
+#apt-get install basez -y
 
 #Web Scan Tools (Arachni)
 if [ $TOOL == "Arachni" ] || [ $TOOL == "Todas" ] ; then
@@ -76,8 +80,10 @@ if [ $TOOL == "EyeWitness" ] || [ $TOOL == "Todas" ] ; then
 	cd
 	git clone https://github.com/ChrisTruncer/EyeWitness
 	if [ $? -ne 0 ] ; then
+		cd EyeWitness
 		git pull
 	else
+		cd EyeWitness
 		cd setup
 		chmod 755 setup.sh
 		./setup.sh
@@ -92,32 +98,60 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	apt-get install xsltproc -y
 	apt-get install texlive-latex-base -y
 	apt-get install texlive-latex-extra -y
-	apt-get install nsis -y
+	#apt-get install nsis -y
 	apt-get install alien -y
-	apt-get install rpm -y
+	#apt-get install rpm -y
 	#Tool Extras
 	apt-get install nmap -y
 	nmap --script-updatedb
 	apt-get install nikto -y
 	apt-get install ike-scan -y
 	apt-get install lsof -y
-	apt-get install clamav -y
-	apt-get install clamav-data -y
+	#apt-get install clamav -y
+	#apt-get install clamav-data -y
 	apt-get install pnscan -y
 	apt-get install netdiag -y
 	apt-get install ldapscripts -y
 	apt-get install dirmngr -y
 	apt-get install killall -y
 
-	which openvasmd
-	if [ $? -ne 0 ] ; then
-		apt-get install openvas-manager openvas-manager-common openvas-cli openvas-scanner libopenvas9 greenbone-security-assistant greenbone-security-assistant-common -y
-		dpkg --configure openvas
-		openvas-setup
-		openvasmd --create-user=admin --role=Admin
-		openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM
-	fi
+	
+	lsb_release -d | grep "Ubuntu"
+	if [ $? -eq 0 ] ; then
+		CODENAME=$(lsb_release -c | awk '{ print $2}')
+		cd /etc/apt/
+		grep -R mrazavi *
+		if [ $? -ne 0 ] ; then
+			echo "deb http://ppa.launchpad.net/mrazavi/openvas/ubuntu $CODENAME main" >> /etc/apt/sources.list		
+			# OpenPGP keys: - https://launchpad.net/~mrazavi
+			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 57A42CB9
+			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 90A921F1
+			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 4AA450E0			
+			add-apt-repository ppa:mrazavi/openvas
+			
+			apt-get update
+			
+			apt-get install openvas9 -y
+			apt-get install greenbone-security-assistant9 -y
+			openvasmd --create-user=admin --role=Admin
+			openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM			
+		fi
+		
+		cd
 
+	else
+		which openvasmd	# para Kali
+		if [ $? -ne 0 ] ; then
+			apt-get install openvas-manager openvas-manager-common openvas-cli openvas-scanner libopenvas9 greenbone-security-assistant greenbone-security-assistant-common -y
+			dpkg --configure openvas
+			openvas-setup
+			openvasmd --create-user=admin --role=Admin
+			openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM
+		fi
+	fi
+	
+	
+	
 	# Configurar la Web de OpenVAS para poder acceder remotamente
 	which ifconfig
 	if [ $? -ne 0 ] ; then
@@ -128,14 +162,19 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 
 	which gsad
 	if [ $? -eq 0 ] ; then
-		sed -i s/--listen=127.0.0.1/--listen=$IP_ADDRESS/g /lib/systemd/system/greenbone-security-assistant.service
-		systemctl daemon-reload
-		/etc/init.d/greenbone-security-assistant start
+		if [ ! -z $IP_ADDRESS ] ; then
+			sed -i s/--listen=127.0.0.1/--listen=$IP_ADDRESS/g /lib/systemd/system/greenbone-security-assistant.service
+			systemctl daemon-reload
+			/etc/init.d/greenbone-security-assistant restart
+		fi
 	fi
 
-	service greenbone-security-assistant start
-	service openvas-manager start
+	/etc/init.d/redis-server start
+	service greenbone-security-assistant start	#Kali
+	/etc/init.d/openvas-gsa start	#Ubuntu
 	service openvas-scanner start
+	service openvas-manager start
+	
 
 
 #grep "mrazavi" /etc/apt/sources.list
@@ -242,13 +281,22 @@ if [ $TOOL == "OpenVASPlugins" ] || [ $TOOL == "Todas" ] ; then
 
 	greenbone-certdata-sync; greenbone-nvt-sync ; greenbone-scapdata-sync
 	openvas-nvt-sync ; openvas-scapdata-sync ; openvas-certdata-sync
-	
+
 fi
-#Service Scan Tools (Nessus)
-if [ $TOOL == "Nessus" ] || [ $TOOL == "Todas" ] ; then
+#Service Scan Tools (NessusPlugins)
+if [ $TOOL == "NessusPlugins" ] || [ $TOOL == "Todas" ] ; then
 	cd
 	/opt/nessus/sbin/nessuscli update --plugins-only
 fi
+
+
+#Service Scan Tools (Nmap)
+if [ $TOOL == "Nmap" ] || [ $TOOL == "Todas" ] ; then
+	cd
+	apt-get install nmap -y
+	nmap --script-updatedb
+fi
+
 
 #JAVA
 if [ $TOOL == "Java" ] || [ $TOOL == "Todas" ] ; then
@@ -356,7 +404,9 @@ if [ $TOOL == "Qark" ] || [ $TOOL == "Todas" ] ; then
 	else
 		cd qark
 		echo "Ejecute en la terminal Linux los siguientes comandos:"
-		echo "cd /root/qark/android-sdk_r24.3.4-linux/android-sdk-linux"
+		echo "cd /root/qark/qark/"
+		echo "python ./qarkMain.py"
+		echo "cd /root/qark/qark/android-sdk_r24.3.4-linux/android-sdk-linux"
 		echo "tools/android update sdk --no-ui"
 
 		python ./setup.py  install

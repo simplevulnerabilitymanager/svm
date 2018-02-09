@@ -1,4 +1,5 @@
 @echo off
+setlocal
 set Username=%1
 set Password=%2
 set Timestamp=%3

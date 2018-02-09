@@ -3,20 +3,15 @@ Proyecto=$1
 IP=$2
 Username=$3
 Password=$4
-ScanConfig=$5
-FormatID=$6
-Timestamp=$7
+OpenvasmdIP=$5
+OpenvasmdPort=$6
+ScanConfig=$7
+FormatID=$8
+Timestamp=$9
 
 which xmlstarlet >/dev/null
 if [ $? -ne 0 ] ; then
 	echo "Falta el programa xmlstarlet. Instalelo primero"
-	read -rsp 'Press any key to continue...\n' -n 1 key
-	exit
-fi
-
-which basez >/dev/null
-if [ $? -ne 0 ] ; then
-	echo "Falta el programa basez. Instalelo primero"
 	read -rsp 'Press any key to continue...\n' -n 1 key
 	exit
 fi
@@ -28,17 +23,40 @@ if [ $? -ne 0 ] ; then
 	exit
 fi
 
-which netstat >/dev/null
+which netstat >/dev/null	#En Ubuntu para Windows 10 no anda netstat ni ss
 if [ $? -ne 0 ] ; then
-openvasmd_ip=$(ss -p -l | grep openvasmd | grep LISTEN | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b')
-openvasmd_port=$(ss -p -l | grep openvasmd | grep LISTEN | grep -oE ':[0-9]{1,6}' | cut -d":" -f2)
+	OpenvasmdIP=$(ss -p -l | grep openvasmd | grep LISTEN | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b')
+	OpenvasmdPort=$(ss -p -l | grep openvasmd | grep LISTEN | grep -oE ':[0-9]{1,6}' | cut -d":" -f2)
 else
-openvasmd_ip=$(netstat -anp | grep openvasmd | grep LISTEN | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' | grep -v 0.0.0.0)
-openvasmd_port=$(netstat -ltp | grep openvasmd | grep LISTEN | grep -oE ':[0-9]{1,6}' | cut -d":" -f2)
+	OpenvasmdIP=$(netstat -anp | grep openvasmd | grep LISTEN | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' | grep -v 0.0.0.0)
+	OpenvasmdPort=$(netstat -ltp | grep openvasmd | grep LISTEN | grep -oE ':[0-9]{1,6}' | cut -d":" -f2)
 fi
 
-Server=$openvasmd_ip
-Port=$openvasmd_port
+#En Ubuntu para Windows 10 no anda netstat ni ss
+if [ -z $Server ] ; then
+	Server=$OpenvasmdIP
+fi
+
+if [ -z $Port ] ; then
+	Port=$OpenvasmdPort
+fi
+
+
+if [ -z $Server ] ; then
+	Server=127.0.0.1
+fi
+
+if [ -z $Port ] ; then
+	Port=9390
+fi
+
+
+
+openvassd_status=$(ps ax | grep "openvassd: Initializing" | grep -v grep)
+while [ ! -z $openvassd_status ] ; do
+	echo $openvassd_status
+	ping -c 61 127.0.0.1 > /dev/null
+done
 
 openvassd_status=$(ps ax | grep "openvassd: Reloaded" | grep -v grep)
 while [ ! -z $openvassd_status ] ; do
@@ -70,18 +88,18 @@ target_id=$(cat "/tmp/openvas_scan_target_id_$Timestamp.txt")
 omp --host=$Server --port=$Port --username=$Username --password=$Password --xml="<create_task><name>\"$Proyecto-$Timestamp\"</name><config id=\"$ScanConfig\"></config><target id=\"$target_id\"></target></create_task>" 1> "/tmp/openvas_scan_task_$Timestamp.txt"
 grep "Failed to find target" "/tmp/openvas_scan_task_$Timestamp.txt" 1>/dev/null
 if [ $? -eq 0 ] ; then
-	echo ---Error---
+	echo ---Error-1----
 	exit
 fi
 grep "OK" "/tmp/openvas_scan_task_$Timestamp.txt" 1>/dev/null
 if [ $? -ne 0 ] ; then
-	echo ---Error---
+	echo ---Error-2----
 	exit
 fi
 
 xmlstarlet sel -t -m "create_task_response" -v "@id" "/tmp/openvas_scan_task_$Timestamp.txt" > "/tmp/openvas_scan_task_id_$Timestamp.txt"
 if [ $? -ne 0 ] ; then
-	echo ---Error---
+	echo ---Error-3----
 	exit
 fi
 
@@ -91,7 +109,7 @@ task_id=$(cat "/tmp/openvas_scan_task_id_$Timestamp.txt")
 omp --host=$Server --port=$Port --username=$Username --password=$Password --xml="<start_task task_id=\"$task_id\"></start_task>" 1> "/tmp/openvas_scan_report_$Timestamp.txt"
 grep "OK" "/tmp/openvas_scan_report_$Timestamp.txt" 1>/dev/null
 if [ $? -ne 0 ] ; then
-	echo ---Error---
+	echo ---Error-4----
 	exit
 fi
 
@@ -136,7 +154,7 @@ while [ $salir -eq 0 ] ; do
 		salir=1
 	else
 		ping -c 61 127.0.0.1 > /dev/null
-		date +"%T"
+		date +"%H:%M"
 		salir=0
 	fi
 done
@@ -145,7 +163,7 @@ echo Generando Reporte...
 #http://docs.greenbone.net/API/OMP/omp.html#command_get_reports
 omp --host=$Server --port=$Port --username=$Username --password=$Password --xml="<get_reports report_id=\"$report_id\" filter=\"autofp=0 apply_overrides=1 notes=1 overrides=1 result_hosts_only=1 sort-reverse=severity levels=hml min_qod=70\" format_id=\"$FormatID\"/>" 1> "/tmp/openvas_scan_report_response_$Timestamp.txt"
 xmlstarlet sel -t -v "get_reports_response/report/text()" "/tmp/openvas_scan_report_response_$Timestamp.txt" > "/tmp/openvas_scan_b64_report_$Timestamp.txt"
-basez -d --base64 "/tmp/openvas_scan_b64_report_$Timestamp.txt" > "/tmp/OpenvasReport - $Timestamp.html"
+cat "/tmp/openvas_scan_b64_report_$Timestamp.txt" | openssl enc -base64 -d -A > "/tmp/OpenvasReport - $Timestamp.html"
 
 rm "/tmp/openvas_scan_target_$Timestamp.txt"
 rm "/tmp/openvas_scan_target_id_$Timestamp.txt"

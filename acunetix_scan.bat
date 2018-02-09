@@ -24,9 +24,9 @@ set Doc1="%Documentacion%\AcunetixReport - %TimeStamp%-URL_%NRO%\"
 set Login="%Documentacion%\..\Login.lsr"
 :whileAcu1
 if exist "%DirApp%\wvs_console.exe" ( 
-tasklist /FI "IMAGENAME eq wvs_console.exe" /NH | find /C "wvs_console.exe" > "%TEMP%\acunetix_scan_count_%Timestamp%-URL_%NRO%.txt"
-set /p CANT=<"%TEMP%\acunetix_scan_count_%Timestamp%-URL_%NRO%.txt"
-goto Acunetix1
+tasklist /FI "IMAGENAME eq wvs_console.exe" /NH | find /C "wvs_console.exe" > "%TEMP%\acunetix_scan_count_%Timestamp%-URL_%NRO%.txt" 
+set /p CANT=<"%TEMP%\acunetix_scan_count_%Timestamp%-URL_%NRO%.txt" 
+goto Acunetix1 
 )
 
 
@@ -34,10 +34,10 @@ rem Acunetix v11.0
 set Doc2="%Documentacion%\AcunetixReport - %TimeStamp%-URL_%NRO%.wvs"
 set Login="%Documentacion%\Login.lsr"
 :whileAcu2
-if exist "%DirApp%\wvsc.exe" (
-tasklist /FI "IMAGENAME eq wvsc.exe" /NH | find /C "wvsc.exe" > "%TEMP%\acunetix_scan_count_%Timestamp%-URL_%NRO%.txt"
-set /p CANT=<"%TEMP%\acunetix_scan_count_%Timestamp%-URL_%NRO%.txt"
-goto Acunetix2
+if exist "%DirApp%\wvsc.exe" ( 
+tasklist /FI "IMAGENAME eq wvsc.exe" /NH | find /C "wvsc.exe" > "%TEMP%\acunetix_scan_count_%Timestamp%-URL_%NRO%.txt" 
+set /p CANT=<"%TEMP%\acunetix_scan_count_%Timestamp%-URL_%NRO%.txt" 
+goto Acunetix2 
 )
 
 

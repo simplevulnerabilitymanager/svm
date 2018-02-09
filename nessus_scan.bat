@@ -13,7 +13,9 @@ set Documentacion=%9
 set Documentacion=%Documentacion:"=%
 set Proyecto=%Proyecto:"=%
 
-set Documentacion="%Documentacion%\NessusReport - %Timestamp%.html"
+set DocumentacionHTML="%Documentacion%\NessusReport - %Timestamp%.html"
+set DocumentacionXML="%Documentacion%\NessusReport - %Timestamp%.xml"
+
 set SCAN=0
 
 @title=[Nessus Scan] - %Proyecto%
@@ -57,8 +59,8 @@ if %STATUS% == "canceled" ( echo Canceled && goto :exit1 )
 if %STATUS% == "completed" ( echo: ) else ( ping -n 61 127.0.0.1 > NUL && time /T && goto :scan1 )
 
 
-rem Export Scan
-echo Generando Reporte...
+rem Export Scan HTML
+echo Generando Reporte HTML...
 "%~dp0curl.exe" -s -k -H "X-Cookie: token=%TOKEN%" -H "Content-Type: application/json" -H "Accept: text/plain" https://%Server%:%Port%/scans/%ID_SCAN% | "%~dp0jq-win32.exe" ".history[].history_id" > "%TEMP%\nessus_scan_history_id_%Timestamp%.txt"
 set /p HISTORY_ID=<"%TEMP%\nessus_scan_history_id_%Timestamp%.txt"
 
@@ -73,14 +75,34 @@ if %STATUS_REPORT% == null ( echo ---Error--- && pause && exit )
 if %STATUS_REPORT% == "ready" ( echo: ) else ( ping -n 11 127.0.0.1 > NUL && echo . && goto :doc1 )
 
 rem Download Doc File
-"%~dp0curl.exe" -s -k https://%Server%:%Port%/scans/%ID_SCAN%/export/%FILE%/download?token=%TOKEN% --output %Documentacion%
+"%~dp0curl.exe" -s -k https://%Server%:%Port%/scans/%ID_SCAN%/export/%FILE%/download?token=%TOKEN% --output %DocumentacionHTML%
+
+
+
+rem Export Scan XML
+echo Generando Reporte XML...
+"%~dp0curl.exe" -s -k -H "X-Cookie: token=%TOKEN%" -H "Content-Type: application/json" -H "Accept: text/plain" https://%Server%:%Port%/scans/%ID_SCAN% | "%~dp0jq-win32.exe" ".history[].history_id" > "%TEMP%\nessus_scan_history_id_%Timestamp%.txt"
+set /p HISTORY_ID=<"%TEMP%\nessus_scan_history_id_%Timestamp%.txt"
+
+"%~dp0curl.exe" -s -k -X POST -H "X-Cookie: token=%TOKEN%" -H "Content-Type: application/json" -H "Accept: text/plain" -d "{\"format\":\"nessus\",\"chapters\":\"vuln_hosts_summary;vuln_by_plugin\"}" https://%Server%:%Port%/scans/%ID_SCAN%/export?history_id=%HISTORY_ID% | "%~dp0jq-win32.exe" ".file" > "%TEMP%\nessus_scan_file_%Timestamp%.txt"
+set /p FILE=<"%TEMP%\nessus_scan_file_%Timestamp%.txt"
+
+rem Export Status
+:doc2
+"%~dp0curl.exe" -s -k -H "X-Cookie: token=%TOKEN%" -H "Content-Type: application/json" -H "Accept: text/plain" https://%Server%:%Port%/scans/%ID_SCAN%/export/%FILE%/status | "%~dp0jq-win32.exe" ".status" > "%TEMP%\nessus_scan_status_report_%Timestamp%.txt"
+set /p STATUS_REPORT=<"%TEMP%\nessus_scan_status_report_%Timestamp%.txt"
+if %STATUS_REPORT% == null ( echo ---Error--- && pause && exit )
+if %STATUS_REPORT% == "ready" ( echo: ) else ( ping -n 11 127.0.0.1 > NUL && echo . && goto :doc2 )
+
+rem Download Doc File
+"%~dp0curl.exe" -s -k https://%Server%:%Port%/scans/%ID_SCAN%/export/%FILE%/download?token=%TOKEN% --output %DocumentacionXML%
 
 rem Logout
 "%~dp0curl.exe" -s -k -X DELETE -H "X-Cookie: token=%TOKEN%" -H "Content-Type: application/json" -H "Accept: text/plain" https://%Server%:%Port%/session >NUL
 
 
-echo %Documentacion%
-start "" /WAIT /I ""%Documentacion%""
+echo %DocumentacionHTML%
+start "" /WAIT /I ""%DocumentacionHTML%""
 
 :exit1
 del /F "%TEMP%\nessus_scan_token_%Timestamp%.txt"

@@ -35,16 +35,16 @@ rem http://docs.greenbone.net/API/OMP/omp.html#command_create_task
 findstr.exe /C:"Failed to find target" "%TEMP%\openvas_scan_task_%Timestamp%.txt"
 if %ERRORLEVEL% EQU 0 ( echo Failed to find target && pause && exit )
 findstr.exe /C:"OK" "%TEMP%\openvas_scan_task_%Timestamp%.txt"
-if %ERRORLEVEL% NEQ 0 ( echo ---Error--- && pause && exit )
+if %ERRORLEVEL% NEQ 0 ( echo ---Error(1)--- && pause && exit )
 type "%TEMP%\openvas_scan_task_%Timestamp%.txt" | "%~dp0xml.exe" sel -t -m "create_task_response" -v "@id" > %TEMP%\openvas_scan_task_id_%Timestamp%.txt"
-if %ERRORLEVEL% NEQ 0 ( echo ---Error--- && pause && exit )
+if %ERRORLEVEL% NEQ 0 ( echo ---Error(2)--- && pause && exit )
 set /p task_id=<"%TEMP%\openvas_scan_task_id_%Timestamp%.txt"
 
 
 rem http://docs.greenbone.net/API/OMP/omp.html#command_start_task
 "%~dp0omp_cracked.exe" --host=%Server% --port=%Port% --username=%Username% --password=%Password% --xml="<start_task task_id=\"%task_id%\"></start_task>" 1> "%TEMP%\openvas_scan_report_%Timestamp%.txt"
 findstr.exe /C:"OK" "%TEMP%\openvas_scan_report_%Timestamp%.txt"
-if %ERRORLEVEL% NEQ 0 ( echo ---Error--- && pause && exit )
+if %ERRORLEVEL% NEQ 0 ( echo ---Error(3)--- && pause && exit )
 type "%TEMP%\openvas_scan_report_%Timestamp%.txt" | "%~dp0xml.exe" sel -t -v "start_task_response/report_id" > %TEMP%\openvas_scan_report_id_%Timestamp%.txt"
 set /p report_id=<"%TEMP%\openvas_scan_report_id_%Timestamp%.txt"
 

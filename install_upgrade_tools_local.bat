@@ -4,13 +4,9 @@ set Tool=%1
 
 @title=[Tools Instalar/Actualizar (Local) - %Tool%]
 
-if "%Tool%" == "Psexec" ( 
-"%~dp0curl.exe" -o psexec.exe "https://live.sysinternals.com/psexec.exe"
-)
-
 if "%Tool%" == "Nmap" ( 
-"%~dp0curl.exe" -o "%TEMP%\nmap-7.50-setup.exe" "https://nmap.org/dist/nmap-7.50-setup.exe"
-start "" /WAIT /I ""%TEMP%\nmap-7.50-setup.exe""
+"%~dp0curl.exe" -o "%TEMP%\nmap-7.60-setup.exe" "https://nmap.org/dist/nmap-7.60-setup.exe"
+start "" /WAIT /I ""%TEMP%\nmap-7.60-setup.exe""
 )
 
 if "%Tool%" == "GreenShot" ( 

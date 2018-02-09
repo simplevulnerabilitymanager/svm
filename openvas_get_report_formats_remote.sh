@@ -1,15 +1,28 @@
 #!/bin/bash
 OpenvasUsername=$1
 OpenvasPassword=$2
-Timestamp=$3
+OpenvasmdIP=$3
+OpenvasmdPort=$4
+Timestamp=$5
 
-which netstat
-if [ $? -ne 0 ] ; then
-openvasmd_ip=$(ss -p -l | grep openvasmd | grep LISTEN | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b')
-openvasmd_port=$(ss -p -l | grep openvasmd | grep LISTEN | grep -oE ':[0-9]{1,6}' | cut -d":" -f2)
-else
-openvasmd_ip=$(netstat -anp | grep openvasmd | grep LISTEN | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' | grep -v 0.0.0.0)
-openvasmd_port=$(netstat -ltp | grep openvasmd | grep LISTEN | grep -oE ':[0-9]{1,6}' | cut -d":" -f2)
+#which netstat >/dev/null
+#if [ $? -ne 0 ] ; then
+#OpenvasmdIP=$(ss -p -l | grep openvasmd | grep LISTEN | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b')
+#OpenvasmdPort=$(ss -p -l | grep openvasmd | grep LISTEN | grep -oE ':[0-9]{1,6}' | cut -d":" -f2)
+#else
+#OpenvasmdIP=$(netstat -anp | grep openvasmd | grep LISTEN | grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b' | grep -v 0.0.0.0)
+#OpenvasmdPort=$(netstat -ltp | grep openvasmd | grep LISTEN | grep -oE ':[0-9]{1,6}' | cut -d":" -f2)
+#fi
+
+Server=$OpenvasmdIP
+Port=$OpenvasmdPort
+
+if [ -z $Server ] ; then
+	Server=127.0.0.1
+fi
+
+if [ -z $Port ] ; then
+	Port=9390
 fi
 
 which omp >/dev/null
@@ -18,5 +31,12 @@ if [ $? -ne 0 ] ; then
 	read -rsp 'Press any key to continue...\n' -n 1 key
 	exit
 fi
-omp --host=$openvasmd_ip --port=$openvasmd_port --username=$OpenvasUsername --password=$OpenvasPassword --xml='<get_report_formats />' 1> /tmp/openvas_report_formats_$Timestamp.txt 2>/dev/null
+
+openvassd_status=$(ps ax | grep "openvassd: Reloaded" | grep -v grep)
+while [ ! -z $openvassd_status ] ; do
+	echo $openvassd_status
+	ping -c 61 127.0.0.1 > /dev/null
+done
+
+omp --host=$Server --port=$Port --username=$OpenvasUsername --password=$OpenvasPassword --xml='<get_report_formats />' 1> /tmp/openvas_report_formats_$Timestamp.txt 2> /tmp/openvas_report_formats_$Timestamp.txt
 
