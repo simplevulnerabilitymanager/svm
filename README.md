@@ -12,3 +12,26 @@ These are just the SimpleVulnerabilityManager program script, it is not the comp
 
 
 ![Screenshot](svm_screenshot.png)
+--
+![Screenshot](svm_screenshot1.png)
+--
+![Screenshot](svm_screenshot2.png)
+--
+![Screenshot](svm_screenshot3.png)
+--
+![Screenshot](svm_screenshot4.png)
+--
+![Screenshot](svm_screenshot5.png)
+--
+![Screenshot](svm_screenshot6.png)
+--
+![Screenshot](svm_screenshot7.png)
+--
+![Screenshot](svm_screenshot8.png)
+--
+![Screenshot](svm_screenshot9.png)
+--
+![Screenshot](svm_screenshot10.png)
+--
+![Screenshot](svm_screenshot11.png)
+
