@@ -11,3 +11,4 @@ Program designed for Security Analysts who need to perform vulnerability analysi
 These are just the SimpleVulnerabilityManager program script, it is not the complete program. To download the complete program go to: http://www.simplevulnerabilitymanager.com
 
 
+![Screenshot](svm_screenshot.png)
