@@ -1,20 +1,25 @@
 #!/bin/bash
 # Script que instala los programas que utiliza Simple Vulnerability Manager.
 # Instalar en Kali/Debian/Ubuntu
-# En Windows 10 con "Bash en Ubuntu en Windows" ejecutar antes:
+# En Windows 10 con "Ubuntu 18.04" o "Kali" ejecutar antes: (Download from Microsoft Store)
+#
 # sudo apt-get install openssh-server
 # cd /etc/ssh/
 # sudo /usr/bin/ssh-keygen -A
 # sudo service ssh --full-restart
-# sc stop SshProxy
-# sc stop SshBroker
-# Luego modificar
-# /etc/ssh/sshd_config
+#
+# sudo nano /etc/ssh/sshd_config
+# Agregar lo siguiente:
 # ListenAddress 0.0.0.0
-# UsePrivilegeSeparation no
-# PasswordAuthentication yes
-# service ssh start
-
+#
+# Reiniciar el servicio
+# sudo service ssh --full-restart
+# sudo update-rc.d ssh enable
+#
+# Error: sudo: a password is required
+# FIX:
+# sudo visudo
+# ulises2k ALL=(ALL) NOPASSWD: ALL
 TOOL=$1
 
 export TERM=linux
@@ -40,18 +45,24 @@ apt-get install rubygems -y
 apt-get install python-setuptools -y
 apt-get install gcc -y
 apt-get install awk -y
+apt-get install original-awk -y
 apt-get install xmlstarlet -y
 #apt-get install basez -y
 
 #Web Scan Tools (Arachni)
 if [ $TOOL == "Arachni" ] || [ $TOOL == "Todas" ] ; then
 	cd
+	apt-get install libsqlite3-dev -y
+	apt-get install libpq-dev -y
+	apt-get install postgresql-server-dev-10 -y
+	apt-get install default-libmysqlclient-dev -y
 	apt-get install curl -y
 	apt-get install libcurl3 -y
 	apt-get install libcurl4-openssl-dev -y
 	apt-get install arachni -y
 	gem update
 	gem install watir-webdriver
+	gem install watir
 	gem install selenium-webdriver
 	gem install arachni-reactor
 	gem install arachni-rpc
@@ -61,6 +72,7 @@ fi
 #Information Tools (Recon-ng)
 if [ $TOOL == "Recon-ng" ] || [ $TOOL == "Todas" ] ; then
 	cd
+	apt-get install dos2unix -y
 	apt-get install libxml2-dev -y
 	apt-get install libxslt1-dev -y
 	apt-get install zlib1g-dev -y
@@ -94,10 +106,11 @@ fi
 #Service Scan Tools (OpenVAS)
 if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	cd
-	apt-get install sqlite3 -y
+	apt-get install sqlite3 -y	
 	apt-get install xsltproc -y
 	apt-get install texlive-latex-base -y
 	apt-get install texlive-latex-extra -y
+	apt-get install texlive-fonts-recommended -y
 	#apt-get install nsis -y
 	apt-get install alien -y
 	#apt-get install rpm -y
@@ -114,6 +127,7 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	apt-get install ldapscripts -y
 	apt-get install dirmngr -y
 	apt-get install killall -y
+	apt-get install hydra -y
 
 	
 	lsb_release -d | grep "Ubuntu"
@@ -142,7 +156,7 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	else
 		which openvasmd	# para Kali
 		if [ $? -ne 0 ] ; then
-			apt-get install openvas-manager openvas-manager-common openvas-cli openvas-scanner libopenvas9 greenbone-security-assistant greenbone-security-assistant-common -y
+			apt-get install openvas openvas-manager openvas-manager-common openvas-cli openvas-scanner libopenvas9 greenbone-security-assistant greenbone-security-assistant-common -y
 			dpkg --configure openvas
 			openvas-setup
 			openvasmd --create-user=admin --role=Admin
@@ -155,9 +169,9 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	# Configurar la Web de OpenVAS para poder acceder remotamente
 	which ifconfig
 	if [ $? -ne 0 ] ; then
-		IP_ADDRESS=$(ip addr show eth0 | grep -Po 'inet \K[\d.]+')
+		IP_ADDRESS=$(ip addr show  | grep -Po 'inet \K[\d.]+' | grep -v 127.0.0.1 | head -1)
 	else
-		IP_ADDRESS=$(ifconfig eth0 | awk '{ print $2}' | grep -oE "([0-9]{1,3}[\.]){3}[0-9]{1,3}")
+		IP_ADDRESS=$(ifconfig | awk '{ print $2}' | grep -oE "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | grep -v 127.0.0.1 | head -1)
 	fi
 
 	which gsad
@@ -173,9 +187,8 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	service greenbone-security-assistant start	#Kali
 	/etc/init.d/openvas-gsa start	#Ubuntu
 	service openvas-scanner start
-	service openvas-manager start
+	service openvas-manager start	
 	
-
 
 #grep "mrazavi" /etc/apt/sources.list
 #if [ $? -ne 0 ] ; then
@@ -300,9 +313,9 @@ fi
 
 #JAVA
 if [ $TOOL == "Java" ] || [ $TOOL == "Todas" ] ; then
-	apt-get install openjdk-8-jdk -y
+	apt-get install openjdk-9-jdk -y
 	if [ $? -ne 0 ] ; then
-		apt-get install openjdk-7-jdk -y
+		apt-get install openjdk-8-jdk -y
 	fi
 	#mkdir /opt
 	#Download java
@@ -386,6 +399,7 @@ fi
 #Mobile Tools (Enjarify)
 if [ $TOOL == "Enjarify" ] || [ $TOOL == "Todas" ] ; then
 	cd
+	rm -fr enjarify
 	git clone https://github.com/google/enjarify
 	if [ $? -ne 0 ] ; then
 		cd enjarify
@@ -429,6 +443,7 @@ if [ $TOOL == "MobSF" ] || [ $TOOL == "Todas" ] ; then
 	apt-get install libssl-dev -y
 	apt-get install libjpeg62-dev -y
 	apt-get install libjpeg62-turbo-dev -y
+	apt-get install wkhtmltopdf -y
 	pip install --upgrade scrapy
 	pip install --upgrade cryptography
 	pip install --upgrade cffi
@@ -464,6 +479,7 @@ fi
 #Restore
 #echo 'debconf debconf/frontend select Dialog' | debconf-set-selections
 echo "Termino"
+
 
 
 

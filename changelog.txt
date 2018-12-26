@@ -1,0 +1,82 @@
+Version: 2.0.1 - 25/12/2018
+Add - Recon-ng - Agregado el modulo certificate_transparency,google_site_web,hackertarget y threatcrowd.
+BugFix - Reportes - Se informa mejor si no se tiene instalado Microsoft Office al generar el reporte.
+BugFix - Configuracion - Se soluciono problema al no guardar la configuracion de Recon-ng y EyeWitness.
+BugFix - Install - Se elimino la dependencia de la libreria msstdfmt.dll
+
+Version: 2.0.0 - 5/12/2018
+Add - Se paso todo la aplicacion a dos idiomas, Español e Ingles.
+Add - Configuracion - Tablas de vulnerabilidades por color por riesgo. Colores de riesgo personalizados
+Add - Configuracion - Se abre y lee el template y se extrae todos los formatos de Estilo de Titulo y Estilos de Tablas. Cada Tabla de Riesgo puede tener un Estilo de Formato diferente.
+Add - Configuracion - Doble click en el template ahora abre el Word con el template para editarlo y no un documento nuevo basado en ese template.
+Add - Configuracion - Se agregaron indicadores que representan los colores elegidos en los graficos estadisticos
+Add - Configuracion - Se asigna un estilo de Tabla del template del Word a cada tipo de Riesgo
+Add - Android - Actualizado la version de Android Debug Bridge (adb) a la version 1.0.39
+Add - Navegador Web - Se agrego un acceso directo para ingresar a Acunetix 11
+Add - Seleccionar Color - Se agrego un boton de copiar codigo RGB para pegarlo en los graficos estadisticos.
+Add - Main - Chequea si existe una nueva version de SVM y te lleva a la pagina para descargarlo.
+Add - BugIdeas - Se agrego una ventana de BugIdea para reportar Errores e Ideas para SVM
+BugFix - Recon-ng - Pequeño update con respecto donde se encuentra el ejecutable.
+BugFix - Reportes - La evidencia de las vulnerabilidades se colocan abajo, en vez de arriba como antes.
+BugFix - Muchos bugs solucionados
+
+Version: 1.1.794 - 3/2/2018
+BugFix - Navegador - Modificado el User-Agent para que funcione con Nessus 7
+BugFix - Scripts - Arreglado los scripts de Openvas y Qark que no se copiaban los archivos al servidor remoto
+BugFix - Qark - Eliminados parametros en el script de Qark(--install 0 --exploit 0)
+
+Version: 1.1.793 - 2/1/2018
+Add - PLink - Actualizado de la version 0.69 a 0.70
+Add - PSCP - Actualizado de la version 0.69 a 0.70
+BugFix - Nessus - Arreglado para que exporte correctamente a XML.
+
+Version: 1.1.792 - 31/12/2017 (Happy New Year)
+Add - Acunetix - Soporte para escanear con Acunetix 11 (Enterprise Only) por API. Se mantiene el escaneo con Acunetix 10.5 de forma local.
+Add - Install - Se actualizo el Wine para MacOSX a la version Stable 2.0.3 y se agrego el programa XQuartz-2.7.11 necesario por Wine 2.0.3
+Add - OpenVAS - Se modifico el script de Openvas Remote para que pueda correr en Ubuntu para Windows 10 (https://goo.gl/GxAvW3) (https://goo.gl/yiNUMA)
+Add - Nessus - Exporta el informe en XML y HTML
+Remove - Acunetix <= 10.5 (Remote) - Se elimino el menu para ejecutar Acunetix 10.5 de forma remota. Se reemplaza por Acunetix 11.
+Remove - Configuracion - Se elimino las credenciales de Windows ya que no hay mas soporte para Acunetix 10.5 remoto.
+BugFix - General - Se obliga a que se cree o elija un proyecto para poder utilizar todas las opciones.
+BugFix - Reportes - Arreglado bug que aparecia cuando el Reporte era muuuuy grande ( > 200 Paginas), un mensaje como "This action cannot be completed because the other application is busy. Choose 'Switch to' ..."
+BugFix - Tool/Install/Remoto - Se agrego al menu la opcion de instalar EyeWitness y Java
+BugFix - Tool - Arreglado error al traer el reporte de la tool EyeWitness
+BugFix - Buscador - Arreglado error cuando se colocaba un rango ip en el campo IP como por ejemplo 192.168.1.1-192.168.1.100 (Problema con el -)
+BugFix - Nmap - Arreglado error para que se pueda colocar un dominio en el campo IP para escanear con Nmap.
+
+Version: 1.1.791 - 1/11/2017 
+Add - Reportes - Se agrego como nombre del archivo el tipo de informe, "Informe Técnico" o "Informe Ejecutivo" o "Informe Generico"
+Add - Base de Conocimiento - Actualizada la base de conocimiento con muchas nuevas vulnerabilidades traducidas.
+BugFix - Configuracion - Muestra la descripcion del error cuando trae la configuracion de los reportes en OpenVAS, por ejemplo, cuando falla en la autenticacion
+BugFix - Scan - Arreglado un intercambio de parametros de IP, Username y Password en OpenVAS Scan (Remote SSH)
+BugFix - Menu Vulnerabilidades - Se soluciono bug cuando se ingresaba a Gestion de Vulnerabilidades sin seleccionar un proyecto previamente.
+BugFix - Web - Las web tienen que tener el protocolo http:// o https:// para lanzar las tools de Scaneo de WebServer (Acunetix, Burpsuite, Netsparker, Arachni y Burpsuite)
+BugFix - Configuracion - Se puede elegir el .exe del Burpsuite.
+
+Version: 1.1.790 - 23/9/2017
+BugFix - Importar Proyectos de la Web - Guardaba las IP y las Web en orden invertido al que estaba en la web de SVM [Version Pro]
+BugFix - Buscador - No exportaba a Excel la primera y ultima fila. Ademas ahora se carga on-demand todos los reportes y tiene un progressbar
+BugFix - Linux/MacOS - Corregido error critico al iniciar en Linux y MacOS con Wine
+
+Version: 1.1.789 - 5/9/2017
+BugFix - Reportes - La variable "[Proyecto]" se puede utilizar en el detalle de las vulnerabilidades
+BugFix - Navegador Web - Paginas con certificado invalidos (OpenVAS, Nessus por ejemplo) se puede ingresar.
+BugFix - Navegador Web - Iconos de Actualizar y Parar arreglados.
+
+Version: 1.1.788 - 14/8/2017
+Add - Mensaje informativo sobre no poder escanear IP Privadas con Qualys (External)
+Add - Nuevos iconos mas grandes en el executable
+Add - Reportes - Agregado un Shortcuts para guardar la configuracion - CTRL + S
+Add - Install Tool - Instalacion de Nmap remoto
+BugFix - Reportes - Pequeño bugfix estetico
+BugFix - Reportes - Ocultaba y mostraba mal los textbox cuando se cambiaba de tipos de Reportes.
+
+Version: 1.1.787 - 4/7/2017 (First Version Changelog)
+Add - "Edit Script" OpenVAS Remoto y Local
+Add - OpenVAS Plugins
+Add - Nessus Update Plugins
+Bugfix - Script Nmap Local
+BugFix - Exportar a Excel
+BugFix - Resolver DNS
+
+

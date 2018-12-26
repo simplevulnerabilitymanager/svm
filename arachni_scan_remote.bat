@@ -9,6 +9,7 @@ set Server=%6
 set Username=%7
 set Password=%8
 
+@title=[Arachni] - %Proyecto% - %URL%
 rem #################################################################################
 rem #Editar valores segun corresponda a la web
 rem

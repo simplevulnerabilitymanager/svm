@@ -33,7 +33,7 @@ if [ $? -ne 0 ] ; then
 fi
 
 openvassd_status=$(ps ax | grep "openvassd: Reloaded" | grep -v grep)
-while [ ! -z $openvassd_status ] ; do
+while [ $? -eq 0 ] ; do
 	echo $openvassd_status
 	ping -c 61 127.0.0.1 > /dev/null
 done

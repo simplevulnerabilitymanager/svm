@@ -12,7 +12,7 @@ set Documentacion=%Documentacion:"=%
 set DirApp=%DirApp:"=%
 
 set Proyecto=%Proyecto:"=%
-@title=[Acunetix Scan] - %Proyecto%
+@title=[Acunetix Scan] - %Proyecto% - %URL%
 
 set /a SLEEP=%NRO%*20
 ping -n %SLEEP% 127.0.0.1 > NUL

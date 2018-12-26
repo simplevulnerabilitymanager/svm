@@ -19,7 +19,7 @@ rem (windows) c:\python27\python.exe c:\MobSF\manage.py runserver 0.0.0.0:8000
 rem (linux) python ./manage.py runserver 0.0.0.0:8000
 
 "%~dp0curl.exe" -s -k "%Server%"
-if %ERRORLEVEL% NEQ 0 ( echo MobSF no iniciado. Inicie sesion por SSH a %Server% y ejecute python /root/Mobile-Security-Framework-MobSF/manage.py runserver %Server%:8000 && pause && exit )
+if %ERRORLEVEL% NEQ 0 ( echo MobSF no iniciado. Inicie sesion por SSH a %Server% y ejecute && echo python /root/Mobile-Security-Framework-MobSF/manage.py runserver %Server% && pause && exit )
 
 rem Peticion 1
 "%~dp0curl.exe" -k -H "Referer: %Server%" -D "%TEMP%\mobsf_auth_%Timestamp%.txt" "%Server%" > "%TEMP%\mobsf_token_1_%Timestamp%.txt"
@@ -31,7 +31,7 @@ set TOKEN=%TOKEN:)=%
 set TOKEN=%TOKEN:;=%
 
 rem Peticion 2
-"%~dp0curl.exe" -k -X POST -b "%TEMP%\mobsf_auth_%Timestamp%.txt" -H "X-CSRFToken: %TOKEN%" -H "Referer: %Server%" -F file="@%PathAPK%" "%Server%/Upload/" | "%~dp0jq-win32.exe" .url > "%TEMP%\mobsf_json_%Timestamp%.txt"
+"%~dp0curl.exe" -k -X POST -b "%TEMP%\mobsf_auth_%Timestamp%.txt" -H "X-CSRFToken: %TOKEN%" -H "Referer: %Server%" -F file="@%PathAPK%" "%Server%/upload/" | "%~dp0jq-win32.exe" .url > "%TEMP%\mobsf_json_%Timestamp%.txt"
 set /p requestId=<"%TEMP%\mobsf_json_%Timestamp%.txt"
 
 for /f "tokens=1,2,3 delims=:&" %%a in (%requestId%) do set getchecksum=%%c

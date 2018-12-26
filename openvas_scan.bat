@@ -9,11 +9,8 @@ set Password=%6
 set ScanConfig=%7
 set FormatID=%8
 set Documentacion=%9
-
 shift
 set Timestamp=%9
-
-
 set IP=%IP:"=%
 set Proyecto=%Proyecto:"=%
 set Documentacion=%Documentacion:"=%

@@ -27,11 +27,10 @@ set ProxyPassword=%9
 set Proyecto=%Proyecto:"=%
 set IP=%IP:"=%
 
-@title=[Qualys Scan] - %Proyecto%
+if %Appliance% == External ( title=[Qualys Scan [External]] - "%Proyecto%" ) else ( title=[Qualys Scan [Internal Appliances]] - "%Proyecto%" )
 
 if %UsoProxy% EQU 1 ( set Proxy=--proxy %ProxyIP%:%ProxyPort% --proxy-anyauth --proxy-user %ProxyUser%:%ProxyPassword% )
 if %UsoProxy% EQU 0 ( set Proxy= )
-
 
 rem Login
 "%~dp0curl.exe" -s %Proxy% --compressed -H "X-Requested-With: Curl Sample" -D "%TEMP%\qualys_scan_auth_%Timestamp%.txt" --data "action=login" --data-urlencode "username=%Username%" --data-urlencode "password=%Password%" "https://qualysapi.qualys.com/api/2.0/fo/session/" -o "%TEMP%\qualys_scan_login_%Timestamp%.txt" 2> NUL
@@ -55,6 +54,9 @@ if %Appliance% == External (
 findstr.exe /C:"This API cannot be run again for another" "%TEMP%\qualys_scan_launch_%Timestamp%.txt"
 if %ERRORLEVEL% EQU 0 ( echo La API no se puede usar por unas horas && pause && exit )
 
+findstr.exe /C:"This limit has already been reached" "%TEMP%\qualys_scan_launch_%Timestamp%.txt"
+if %ERRORLEVEL% EQU 0 ( echo Se alcanzo el limite de escaneos && pause && exit )
+
 type "%TEMP%\qualys_scan_launch_%Timestamp%.txt" | "%~dp0xml.exe" sel -t -v "/SIMPLE_RETURN/RESPONSE/ITEM_LIST/ITEM/VALUE" 2>NUL | find "scan/" > "%TEMP%\qualys_scan_id_%Timestamp%.txt" 2>NUL
 
 ping -n 11 127.0.0.1 > NUL
@@ -75,7 +77,7 @@ rem Logout
 
 
 rem Export Scan
-call "%~dp0qualys_scan_report.bat" "%Proyecto%" "%IP%" %Username% %Password% %Documentacion% %TypeReport% 1275603 %Timestamp% %UsoProxy% %ProxyIP% %ProxyPort% %ProxyUser% %ProxyPassword%
+call "%~dp0qualys_scan_report.bat" "%Proyecto%" "%IP%" %Username% %Password% %Documentacion% %TypeReport% 1075927 %Timestamp% %UsoProxy% %ProxyIP% %ProxyPort% %ProxyUser% %ProxyPassword%
 
 if %AutoReport% EQU 1 ( call "%~dp0qualys_report.bat" "%Proyecto%" "%IP%" %Username% %Password% %Documentacion% %TypeReport% %TemplateId% %Timestamp% %UsoProxy% %ProxyIP% %ProxyPort% %ProxyUser% %ProxyPassword% )
 

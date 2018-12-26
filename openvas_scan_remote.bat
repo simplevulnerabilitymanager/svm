@@ -23,7 +23,7 @@ set Proyecto=%Proyecto:"=%
 set Documentacion=%Documentacion:"=%
 set Documentacion="%Documentacion%\OpenvasReport - %Timestamp%.html"
 
-@title=[OpenVAS Scan (Remote)] - %Proyecto%
+@title=[OpenVAS Scan (Remoto SSH)] - %Proyecto%
 
 "%~dp0pscp.exe" -l %LinuxUsername% -pw %LinuxPassword% -C "%~dp0openvas_scan_remote.sh" %LinuxServer%:"/tmp/openvas_scan_remote_1.sh"
 "%~dp0plink.exe" -P 22 -ssh -l %LinuxUsername% -pw %LinuxPassword% -C %LinuxServer% "tr -d '\15\32' < /tmp/openvas_scan_remote_1.sh > /tmp/openvas_scan_remote.sh"

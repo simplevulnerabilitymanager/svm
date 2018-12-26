@@ -12,7 +12,7 @@ set Proyecto=%Proyecto:"=%
 
 set Documentacion=%Documentacion:"=%
 
-@title=[Netsparker Scan] - %Proyecto%
+@title=[Netsparker Scan] - %Proyecto% - %URL%
 
 set /a SLEEP=%NRO%*20
 ping -n %SLEEP% 127.0.0.1 > NUL
