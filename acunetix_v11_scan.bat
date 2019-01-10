@@ -21,7 +21,7 @@ ping -n %SLEEP% 127.0.0.1 > NUL
 
 rem Acunetix v11.0/v12.0
 rem Add Target
-"%~dp0curl.exe" -s -k -X POST -H "Content-Type: application/json" -H "X-Auth: %APIKEY%" --data-urlencode "{\"address\":\"%URL%\",\"description\":\"%Proyecto%\",\"criticality\":\"10\"}" "%APIURL%/api/v1/targets" | "%~dp0jq-win32.exe" .target_id > "%TEMP%\acunetix11_add_target_%Timestamp%-URL_%NRO%.txt"
+"%~dp0curl.exe" -s -k -X POST -H "Content-Type: application/json" -H "X-Auth: %APIKEY%" -d "{\"address\":\"%URL%\",\"description\":\"%Proyecto%\",\"criticality\":\"10\"}" "%APIURL%/api/v1/targets" | "%~dp0jq-win32.exe" .target_id > "%TEMP%\acunetix11_add_target_%Timestamp%-URL_%NRO%.txt"
 set /p TARGET_ID=<"%TEMP%\acunetix11_add_target_%Timestamp%-URL_%NRO%.txt"
 set TARGET_ID=%TARGET_ID:"=%
 if /I %TARGET_ID% == null ( echo Error: Generando Target && pause && exit )
