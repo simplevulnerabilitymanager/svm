@@ -1,4 +1,4 @@
-Version: 2.0.2 - 
+Version: 2.0.2 - 12/01/2019
 Add - DEMO - Se puede probar una demo de la licencia SVM Pro configurando en "Opciones/Configuracion de Conexión" -> Server: svm.myddns.me / Puerto: 8444 / Token: svm_demo
 Add - Main - Se agrego cifrado y compresion de datos entre la conexion del server con los clientes. (Solo para SVM Pro)
 Add - Install - Se actualizo el icono del instalador al del SVM.
