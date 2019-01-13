@@ -1,6 +1,6 @@
 @echo off
 setlocal
-rem https://www.youtube.com/watch?v=p2gpjTZgOa0
+rem https://www.youtube.com/watch?v=p2gpjTZgOa0 - OSINT - recon-ng information gathering example tutorial
 set Proyecto=%1
 set Domains=%2
 set Documentacion=%3
@@ -9,6 +9,16 @@ set Server=%5
 set Username=%6
 set Password=%7
 
+rem MODIFY WITH YOUR APIs
+set bing_api=
+set builtwith_api=
+set fullcontact_api=
+set github_api=
+set google_api=
+set google_cse=
+set hashes_api=
+set shodan_api=
+rem MODIFY WITH YOUR APIs
 
 set Documentacion=%Documentacion:"=%
 set DocumentacionReport="%Documentacion%\recon-ngReport - %Timestamp%.html"
@@ -18,7 +28,7 @@ set DocumentacionIP="%Documentacion%\recon-ngReport-IP - %Timestamp%.txt"
 
 @title=[Recon-ng] - %Proyecto%
 
-rem git clone https://LaNMaSteR53@bitbucket.org/LaNMaSteR53/recon-ng.git
+rem git clone https://bitbucket.org/LaNMaSteR53/recon-ng.git
 rem pip install -r REQUIREMENTS
 echo "Generando script..."
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'workspaces add %Proyecto%' > '/tmp/recon-ng-script_%Timestamp%.txt'"
@@ -32,15 +42,14 @@ for %%a in (%Domains:,= %) do (
 echo .
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'load recon/domains-hosts/netcraft' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'run' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
-rem "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'keys add bing_api <value>' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
-rem keys add bing_api <value>
-rem keys add builtwith_api <value>
-rem keys add fullcontact_api <value>
-rem keys add github_api <value>
-rem keys add google_api <value>
-rem keys add google_cse <value>
-rem keys add hashes_api <value>
-rem keys add shodan_api <value>
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'keys add bing_api %bing_api%' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'keys add builtwith_api %builtwith_api%' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'keys add fullcontact_api %fullcontact_api%' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'keys add github_api %github_api%' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'keys add google_api %google_api%' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'keys add google_cse %google_cse%' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'keys add hashes_api %hashes_api%' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'keys add shodan_api %shodan_api%' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
 echo .
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'use recon/domains-hosts/bing_domain_api' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'run' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
@@ -146,7 +155,7 @@ echo .
 
 echo "Ejecutando..."
 rem "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "/root/recon-ng/recon-ng -r '/tmp/recon-ng-script_%Timestamp%.txt'"
-"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "which recon-ng ; if [ $? -ne 0 ] ; then $HOME/recon-ng/recon-ng -r '/tmp/recon-ng-script_%Timestamp%.txt' ; else recon-ng -r '/tmp/recon-ng-script_%Timestamp%.txt' ; fi"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "which recon-ng ; if [ $? -ne 0 ] ; then /root/recon-ng/recon-ng -r '/tmp/recon-ng-script_%Timestamp%.txt' ; else recon-ng -r '/tmp/recon-ng-script_%Timestamp%.txt' ; fi"
 
 echo "Generando Reporte..."
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "unix2dos '/tmp/recon-ngreport-networks - %Timestamp%.txt'"

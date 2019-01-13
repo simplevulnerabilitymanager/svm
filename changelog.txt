@@ -1,3 +1,15 @@
+Version: 2.0.2 - 
+Add - DEMO - Se puede probar una demo de la licencia SVM Pro configurando en "Opciones/Configuracion de Conexión" -> Server: svm.myddns.me / Puerto: 8444 / Token: svm_demo
+Add - Main - Se agrego cifrado y compresion de datos entre la conexion del server con los clientes. (Solo para SVM Pro)
+Add - Install - Se actualizo el icono del instalador al del SVM.
+Add - Configuracion - Se reemplazo en Configuracion/Reportes la ventana de seleccionar el color de riesgo por una ventana estandar en Windows
+Remove - Install - Se elimino la dependencia de la libreria VBCCR16.OCX
+BugFix - Main - Se soluciono un problema al redimensionar la ventana los controles no se restablecian a la posicion original.
+BugFix - Main - Mejor manejo de errores al no tener instalado Microsoft Word y Microsoft Excel.
+BugFix - Buscardor - Mejor manejo de errores al no tener instalado Microsoft Excel al exportar los proyectos.
+BugFix - Reporte - Se arreglo error al no reemplazar la variable [Subtitulo] por el valor que correspondia.
+BugFix - Acunetix -  Solucionado un error al crear el target en Acunetix.
+
 Version: 2.0.1 - 25/12/2018
 Add - Recon-ng - Agregado el modulo certificate_transparency,google_site_web,hackertarget y threatcrowd.
 BugFix - Reportes - Se informa mejor si no se tiene instalado Microsoft Office al generar el reporte.
