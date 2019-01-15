@@ -1,4 +1,4 @@
-@echo off
+rem @echo off
 setlocal
 set Server=%1
 set Username=%2
@@ -11,6 +11,6 @@ set Tool=%4
 if %ERRORLEVEL% NEQ 0 ( echo ---Error--- && pause && exit )
 "%~dp0plink.exe" -t -ssh -P 22 -l %Username% -pw %Password% -C %Server% "tr -d '\15\32' < /tmp/install_upgrade_tools_remoto_1.sh > /tmp/install_upgrade_tools_remoto.sh"
 "%~dp0plink.exe" -t -ssh -P 22 -l %Username% -pw %Password% -C %Server% "chmod 755 /tmp/install_upgrade_tools_remoto.sh"
-"%~dp0plink.exe" -t -ssh -P 22 -l %Username% -pw %Password% -C %Server% "sudo -n -H /tmp/install_upgrade_tools_remoto.sh %Tool%" 
+"%~dp0plink.exe" -t -ssh -P 22 -l %Username% -pw %Password% -C %Server% "if [ $(id -g) == 0 ] ; then /tmp/install_upgrade_tools_remoto.sh %Tool% ; else sudo -n -H /tmp/install_upgrade_tools_remoto.sh %Tool% ; fi"
 "%~dp0plink.exe" -t -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -fr /tmp/install_upgrade_tools_remoto_1.sh /tmp/install_upgrade_tools_remoto.sh"
 pause
