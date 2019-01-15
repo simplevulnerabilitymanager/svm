@@ -106,7 +106,7 @@ fi
 #Service Scan Tools (OpenVAS)
 if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	cd
-	apt-get install sqlite3 -y	
+	apt-get install sqlite3 -y
 	apt-get install xsltproc -y
 	apt-get install texlive-latex-base -y
 	apt-get install texlive-latex-extra -y
@@ -129,31 +129,9 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	apt-get install killall -y
 	apt-get install hydra -y
 
-	
-	lsb_release -d | grep "Ubuntu"
-	if [ $? -eq 0 ] ; then
-		CODENAME=$(lsb_release -c | awk '{ print $2}')
-		cd /etc/apt/
-		grep -R mrazavi *
-		if [ $? -ne 0 ] ; then
-			echo "deb http://ppa.launchpad.net/mrazavi/openvas/ubuntu $CODENAME main" >> /etc/apt/sources.list		
-			# OpenPGP keys: - https://launchpad.net/~mrazavi
-			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 57A42CB9
-			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 90A921F1
-			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 4AA450E0			
-			add-apt-repository ppa:mrazavi/openvas
-			
-			apt-get update
-			
-			apt-get install openvas9 -y
-			apt-get install greenbone-security-assistant9 -y
-			openvasmd --create-user=admin --role=Admin
-			openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM			
-		fi
-		
-		cd
 
-	else
+	lsb_release -d | grep "Kali"
+	if [ $? -eq 0 ] ; then
 		which openvasmd	# para Kali
 		if [ $? -ne 0 ] ; then
 			apt-get install openvas openvas-manager openvas-manager-common openvas-cli openvas-scanner libopenvas9 greenbone-security-assistant greenbone-security-assistant-common -y
@@ -162,10 +140,31 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 			openvasmd --create-user=admin --role=Admin
 			openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM
 		fi
+	else
+		CODENAME=$(lsb_release -c | awk '{ print $2}')
+		cd /etc/apt/
+		grep -R mrazavi *
+		if [ $? -ne 0 ] ; then
+			echo "deb http://ppa.launchpad.net/mrazavi/openvas/ubuntu $CODENAME main" >> /etc/apt/sources.list
+			# OpenPGP keys: - https://launchpad.net/~mrazavi
+			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 57A42CB9
+			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 90A921F1
+			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 4AA450E0
+			add-apt-repository ppa:mrazavi/openvas
+
+			apt-get update
+
+			apt-get install openvas9 -y
+			apt-get install greenbone-security-assistant9 -y
+			openvasmd --create-user=admin --role=Admin
+			openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM
+		fi
+
+		cd
 	fi
-	
-	
-	
+
+
+
 	# Configurar la Web de OpenVAS para poder acceder remotamente
 	which ifconfig
 	if [ $? -ne 0 ] ; then
@@ -187,8 +186,8 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	service greenbone-security-assistant start	#Kali
 	/etc/init.d/openvas-gsa start	#Ubuntu
 	service openvas-scanner start
-	service openvas-manager start	
-	
+	service openvas-manager start
+
 
 #grep "mrazavi" /etc/apt/sources.list
 #if [ $? -ne 0 ] ; then
