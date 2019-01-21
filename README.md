@@ -37,4 +37,4 @@ These are just the SimpleVulnerabilityManager program script, it is not the comp
 
 
 
-[![Twitter](https://img.shields.io/badge/twitter-drk1wi-blue.svg)](https://twitter.com/SimpleVulnManag)
+[![Twitter](https://img.shields.io/badge/Twitter-SimpleVulnManag-blue.svg)](https://twitter.com/SimpleVulnManag)
