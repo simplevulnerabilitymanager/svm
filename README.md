@@ -1,5 +1,9 @@
 ![](https://img.shields.io/github/downloads/simplevulnerabilitymanager/svm/total.svg)
 
+
+![](https://img.shields.io/github/issues/simplevulnerabilitymanager/svm.svg)
+
+
 # Descripción
 Programa para realizar análisis de vulnerabilidades y generar un reporte automáticamente
 
