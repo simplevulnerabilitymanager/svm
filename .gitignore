@@ -1,21 +1,3 @@
-install/Simple_Vulnerability_Manager.zip
-install/Simple_Vulnerability_Manager_Wine.zip
-install/Simple_Vulnerability_Manager_Wine_Install.zip
-install/Simple_Vulnerability_Manager_Install.zip
-install/Simple_Vulnerability_Manager_Install_Windows_v2.zip
-install/Simple_Vulnerability_Manager_Wine_Install.tar.gz
-install/Simple_Vulnerability_Manager_Wine_Install_Mac.tar.gz
-install/Simple_Vulnerability_Manager_Wine_Install_Linux.tar.gz
-install/Simple_Vulnerability_Manager_Install_Windows.zip
-install/Simple_Vulnerability_Manager_Server_Install.zip
-install/Wine_For_MacOSX/winehq-stable-*.pkg
-install/Wine_For_MacOSX/WineBottlerCombo_*.dmg
-install/Wine_For_MacOSX/winehq-staging-1.9.21.pkg
-install/Wine_For_MacOSX/XQuartz-2.7.11.dmg
-install/Wine_For_MacOSX/Wineskin Winery.app Version 1.7.zip
-tools/addins/addins.zip
 *.exe
 *.dll
 Thumbs.db
-imagenes_iconos/Thumbs.db
-NSIS/
