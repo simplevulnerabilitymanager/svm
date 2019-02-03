@@ -1,4 +1,4 @@
-rem @echo off
+@echo off
 setlocal
 set Server=%1
 set Username=%2

@@ -130,6 +130,11 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	apt-get install hydra -y
 
 
+	detectversionlinux=$(which lsb_release)
+	if [ $? -ne 0 ] ; then
+		apt-get install lsb-release -y
+	fi
+
 	lsb_release -d | grep "Kali"
 	if [ $? -eq 0 ] ; then
 		which openvasmd	# para Kali
@@ -145,11 +150,12 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 		cd /etc/apt/
 		grep -R mrazavi *
 		if [ $? -ne 0 ] ; then
-			echo "deb http://ppa.launchpad.net/mrazavi/openvas/ubuntu $CODENAME main" >> /etc/apt/sources.list
+			echo "deb http://ppa.launchpad.net/mrazavi/openvas/ubuntu $CODENAME main" > /etc/apt/sources.list.d/openvas.list
 			# OpenPGP keys: - https://launchpad.net/~mrazavi
 			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 57A42CB9
 			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 90A921F1
 			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 4AA450E0
+			apt-get install software-properties-common -y
 			add-apt-repository ppa:mrazavi/openvas
 
 			apt-get update

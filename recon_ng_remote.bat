@@ -10,14 +10,27 @@ set Username=%6
 set Password=%7
 
 rem MODIFY WITH YOUR APIs
-set bing_api=
-set builtwith_api=
-set fullcontact_api=
-set github_api=
 set google_api=
-set google_cse=
+set github_api=
 set hashes_api=
 set shodan_api=
+set pwnedlist_api=
+set pwnedlist_secret=
+set pwnedlist_iv=
+set fullcontact_api=
+set virustotal_api=
+set twitter_api=
+set twitter_secret=
+set bing_api=
+set builtwith_api=
+set flickr_api=
+set jigsaw_username=
+set jigsaw_password=
+set jigsaw_api=
+set ipstack_api=
+set ipinfodb_api=
+set censysio_id=
+set censysio_secret=
 rem MODIFY WITH YOUR APIs
 
 set Documentacion=%Documentacion:"=%
@@ -30,6 +43,9 @@ set DocumentacionIP="%Documentacion%\recon-ngReport-IP - %Timestamp%.txt"
 
 rem git clone https://bitbucket.org/LaNMaSteR53/recon-ng.git
 rem pip install -r REQUIREMENTS
+rem Otros modulos para Recon-ng
+rem https://github.com/scumsec/Recon-ng-modules
+rem http://10degres.net/subdomain-enumeration/ mas tools
 echo "Generando script..."
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'workspaces add %Proyecto%' > '/tmp/recon-ng-script_%Timestamp%.txt'"
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "echo 'add companies %Proyecto%' >> '/tmp/recon-ng-script_%Timestamp%.txt'"
@@ -163,15 +179,15 @@ echo "Generando Reporte..."
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "unix2dos '/tmp/recon-ngreport-ip - %Timestamp%.txt'"
 
 "%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/recon-ngReport - %Timestamp%.html" %DocumentacionReport%
-"%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/recon-ngReport-networks - %Timestamp%.txt" %DocumentacionNetworks%
-"%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/recon-ngReport-subdomains - %Timestamp%.txt" %DocumentacionSubdomains%
-"%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/recon-ngReport-ip - %Timestamp%.txt" %DocumentacionIP%
+"%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/recon-ngreport-networks - %Timestamp%.txt" %DocumentacionNetworks%
+"%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/recon-ngreport-subdomains - %Timestamp%.txt" %DocumentacionSubdomains%
+"%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/recon-ngreport-ip - %Timestamp%.txt" %DocumentacionIP%
 
 
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/recon-ngReport - %Timestamp%.html'"
-"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/recon-ngReport-networks - %Timestamp%.txt'"
-"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/recon-ngReport-subdomains - %Timestamp%.txt'"
-"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/recon-ngReport-ip - %Timestamp%.txt'"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/recon-ngreport-networks - %Timestamp%.txt'"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/recon-ngreport-subdomains - %Timestamp%.txt'"
+"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/recon-ngreport-ip - %Timestamp%.txt'"
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/recon-ng-script_%Timestamp%.txt'"
 
 

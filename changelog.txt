@@ -1,3 +1,17 @@
+Version: 2.0.3 - 03/02/2019
+Add - Nmap - Se puede lanzar un escaneo con Nmap a las Web/Dominios del Proyecto.
+Bugfix - Install Tools - Se mejoró la deteccion del entorno, por ejemplo en Debian 9 para instalar las tools.
+Bugfix - Recon-ng - Se agregaron variables para agregar las API utilizadas en los servicios utilizados para el reconocimientos de dominios (SHODAN, IpInfoDB, etc).
+BugFix - Recon-ng - Se puede colocar dominios sin especificar el protocolo para lanzar la tools.
+Bugfix - Configuracion - Reportes->Graficos Estadisticos, no cargaba la opcion que se habia guardado.
+Bugfix - Configuracion - Arreglo general al guardar la configuracion.
+BugFix - OWASP Mobile - Al restaurar despues de hacer Zoom+, los controles no volvian a su estado normal.
+BugFix - BugIdeas - Faltaba la barra del scroll vertical en el campo de comentario para reportar bugs e ideas.
+BugFix - Backup - Cuando se realizaba un backup de la DB local, arrojaba un error en Wine.
+BugFix - Main - Al ejecutar dos instancias de svm.exe, al salir de la segunda, arrojaba error con Wine.
+BugFix - Reportes - Crear reportes de los nombres de las vulnerabilidades fallaba solo en Wine.
+BugFix - Reportes - Plantilla de Word nueva con nombre de Titulo nuevo, llamado Titulo_SVM. Mejor compatibilidad para Word en Ingles/Español
+
 Version: 2.0.2 - 12/01/2019
 Add - DEMO - Se puede probar una demo de la licencia SVM Pro configurando en "Opciones/Configuracion de Conexión" -> Server: svm.myddns.me / Puerto: 8444 / Token: svm_demo
 Add - Main - Se agrego cifrado y compresion de datos entre la conexion del server con los clientes. (Solo para SVM Pro)
@@ -6,7 +20,7 @@ Add - Configuracion - Se reemplazo en Configuracion/Reportes la ventana de selec
 Remove - Install - Se elimino la dependencia de la libreria VBCCR16.OCX
 BugFix - Main - Se soluciono un problema al redimensionar la ventana los controles no se restablecian a la posicion original.
 BugFix - Main - Mejor manejo de errores al no tener instalado Microsoft Word y Microsoft Excel.
-BugFix - Buscardor - Mejor manejo de errores al no tener instalado Microsoft Excel al exportar los proyectos.
+BugFix - Buscador - Mejor manejo de errores al no tener instalado Microsoft Excel al exportar los proyectos.
 BugFix - Reporte - Se arreglo error al no reemplazar la variable [Subtitulo] por el valor que correspondia.
 BugFix - Acunetix -  Solucionado un error al crear el target en Acunetix.
 
