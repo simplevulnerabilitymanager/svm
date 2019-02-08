@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/github/issues/simplevulnerabilitymanager/svm.svg)
 
-![](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)
+![https://github.com/simplevulnerabilitymanager/svm/releases/tag/v2.0.3](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)
 
 [![](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=SimpleVulnerabilityManager-Website)](https://www.simplevulnerabilitymanager.com/)
 
