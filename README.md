@@ -1,10 +1,7 @@
 [![](https://img.shields.io/github/downloads/simplevulnerabilitymanager/svm/total.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/download/v2.0.3/Simple_Vulnerability_Manager_Install_Windows_v2.zip)
 
-[![](https://img.shields.io/github/issues/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/issues)
-
 [![](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/tag/v2.0.3)
 
-[![](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=SimpleVulnerabilityManager-Website)](https://www.simplevulnerabilitymanager.com/)
 
 # Descripción
 Simple Vulnerability Manager es la herramienta perfecta para cualquier analista de vulnerabilidades, ya que con tan solo un par de clicks se podrán tanto realizar completos análisis sobre las debilidades de un sistema como generar informes sobre los mismos que ayudarán a comprender y solucionar los distintos problemas que estas vulnerabilidades puedan estar causando.
@@ -28,43 +25,58 @@ https://www.simplevulnerabilitymanager.com
 ![Screenshot](svm_screenshot1.png)
 Pantalla Principal
 
---
+
 
 ![Screenshot](svm_screenshot2.png)
-Lista de vulnerabilidades disponibles para agregar al proyecto
+Lista de vulnerabilidades disponibles para agregar al proyecto.
 
---
+
 
 ![Screenshot](svm_screenshot3.png)
 Detalle de una vulnerabilidad que existe en el proyecto.
 
---
+
 
 ![Screenshot](svm_screenshot4.png)
-Primera pagina del reporte generado en Microsoft Word.
+Primera página del reporte generado en Microsoft Word.
 
---
+
 ![Screenshot](svm_screenshot5.png)
 Segunda pagina del reporte generado
 
---
+
 ![Screenshot](svm_screenshot6.png)
---
+
 
 ![Screenshot](svm_screenshot8.png)
 Detalle de vulnerabilidades detectadas
 
---
 
 ![Screenshot](svm_screenshot10.png)
 Graficos estadisticos con las vulnerabilidades detectadas. (Hay graficos 9 tipos de graficos estadisticos para elegir)
 
---
+
 ![Screenshot](svm_screenshot11.png)
 Anexo con los detalle de la vulnerabilidad donde es afectada.
 
 
-[![Twitter](https://img.shields.io/badge/Twitter-SimpleVulnManag-blue.svg)](https://twitter.com/SimpleVulnManag)
+# Presentaciones
 
-[![](https://img.shields.io/twitter/follow/SimpleVulnManag.svg?label=Follow&style=social)](https://twitter.com/SimpleVulnManag)
+* [Ekoparty Security Conference](https://www.ekoparty.org) : Ekolabs [2016](https://twitter.com/SimpleVulnManag/status/792072988204134402)
+
+* [Andsec Security Conference](https://www.andsec.org) : [2017](https://twitter.com/SimpleVulnManag/status/871576216112963586)
+
+# Links
+
+* Twitter: [@SimpleVulnManag](https://twitter.com/SimpleVulnManag) [![](https://img.shields.io/twitter/follow/SimpleVulnManag.svg?label=Follow&style=social)](https://twitter.com/SimpleVulnManag)
+
+* Facebook: [@SimpleVulnerabilityManager](https://www.facebook.com/simplevulnerabilitymanager)
+
+* Instagram: [@SimpleVulnerabilityManager](https://www.instagram.com/simplevulnerabilitymanager/)
+
+* Homepage: [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
+
+
+
+
 
