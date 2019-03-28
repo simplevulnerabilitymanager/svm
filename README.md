@@ -1,5 +1,3 @@
-[![](https://img.shields.io/github/downloads/simplevulnerabilitymanager/svm/total.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/download/v2.0.3/Simple_Vulnerability_Manager_Install_Windows_v2.zip)
-
 [![](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/tag/v2.0.3)
 
 
