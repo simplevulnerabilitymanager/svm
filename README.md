@@ -59,6 +59,26 @@ Graficos estadisticos con las vulnerabilidades detectadas. (Hay graficos 9 tipos
 ![Screenshot](svm_screenshot11.png)
 Anexo con los detalle de la vulnerabilidad donde es afectada.
 
+# Tools
+
+Simple Vulnerability Manager se integra con todas las siguientes tool externas para poder ejecutarlas rapidamente con un solo click, lo que te permite ahorrar tiempo en la ejecucion de los escaneos automatizados.
+
+**Web Scanner**
+
+* [Acunetix](https://www.acunetix.com/)
+
+* [Burpsuite](https://portswigger.net/burp)
+
+* [Arachni Web Application](https://www.arachni-scanner.com/)
+
+**Services Scanner**
+
+* Qualys
+
+* Nessus
+
+* OpenVAS
+
 
 # Presentaciones
 
