@@ -17,47 +17,51 @@ Una de las características más interesantes de Simple Vulnerability Manager es
 
 
 # Instalación
-Estos son solo los script del programa SimpleVulnerabilityManager, no es el programa completo.
+Los archivos que se encuentran en este repositorio son solo los script del programa SimpleVulnerabilityManager, no es el programa completo.
 
-Descargar el programa completo en:
+Descargar el programa completo:
 https://www.simplevulnerabilitymanager.com
 
 
-
-
---
-# Description
-Program to perform vulnerability analysis and automatically generate a report
-
-These are just the SimpleVulnerabilityManager program script, it is not the complete program. 
-
-# Download
-To download the complete program go to: https://www.simplevulnerabilitymanager.com/?lang=en
-
-
+# Capturas de Pantalla
 
 ![Screenshot](svm_screenshot1.png)
+Pantalla Principal
+
 --
+
 ![Screenshot](svm_screenshot2.png)
+Lista de vulnerabilidades disponibles para agregar al proyecto
+
 --
+
 ![Screenshot](svm_screenshot3.png)
+Detalle de una vulnerabilidad que existe en el proyecto.
+
 --
+
 ![Screenshot](svm_screenshot4.png)
+Primera pagina del reporte generado en Microsoft Word.
+
 --
 ![Screenshot](svm_screenshot5.png)
+Segunda pagina del reporte generado
+
 --
 ![Screenshot](svm_screenshot6.png)
 --
-![Screenshot](svm_screenshot7.png)
---
+
 ![Screenshot](svm_screenshot8.png)
+Detalle de vulnerabilidades detectadas
+
 --
-![Screenshot](svm_screenshot9.png)
---
+
 ![Screenshot](svm_screenshot10.png)
+Graficos estadisticos con las vulnerabilidades detectadas. (Hay graficos 9 tipos de graficos estadisticos para elegir)
+
 --
 ![Screenshot](svm_screenshot11.png)
-
+Anexo con los detalle de la vulnerabilidad donde es afectada.
 
 
 [![Twitter](https://img.shields.io/badge/Twitter-SimpleVulnManag-blue.svg)](https://twitter.com/SimpleVulnManag)
