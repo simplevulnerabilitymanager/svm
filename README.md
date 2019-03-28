@@ -74,6 +74,8 @@ Anexo con los detalle de la vulnerabilidad donde es afectada.
 
 * Instagram: [@SimpleVulnerabilityManager](https://www.instagram.com/simplevulnerabilitymanager/)
 
+* Youtube: [Canal](https://www.youtube.com/channel/UCDXH-m2SqQsnb91UUsQxlrQ?view_as=subscriber)
+
 * Homepage: [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
 
 
