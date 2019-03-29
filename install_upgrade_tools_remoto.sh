@@ -360,24 +360,28 @@ if [ $TOOL == "MobSF" ] || [ $TOOL == "Todas" ] ; then
 	apt-get install libjpeg62-dev -y
 	apt-get install libjpeg62-turbo-dev -y
 	apt-get install wkhtmltopdf -y
-	pip install --upgrade scrapy
-	pip install --upgrade cryptography
-	pip install --upgrade cffi
-	pip install --upgrade pycparser
+	apt-get install python3-django-wkhtmltopdf -y
+	pip3 install --upgrade scrapy
+	pip3 install --upgrade cryptography
+	pip3 install --upgrade cffi
+	pip3 install --upgrade pycparser
+	pip3 install colorlog
 
 	cd
 	rm -fr Mobile-Security-Framework-MobSF	#Opcional
 	git clone --depth 1 https://github.com/ajinabraham/Mobile-Security-Framework-MobSF
-	#wget https://github.com/ajinabraham/Mobile-Security-Framework-MobSF/archive/v0.9.3.tar.gz -O Mobile-Security-Framework-MobSF.tar.gz
+	# wget https://github.com/ajinabraham/Mobile-Security-Framework-MobSF/archive/v0.9.3.tar.gz -O Mobile-Security-Framework-MobSF.tar.gz
 	# git clone https://github.com/ajinabraham/Mobile-Security-Framework-MobSF/tree/v0.9.3
 	if [ $? -ne 0 ] ; then
 		cd Mobile-Security-Framework-MobSF
 		git pull
 		pip install -r requirements.txt --upgrade
 		python ./manage.py migrate
+		./setup.sh
 	else
 		cd Mobile-Security-Framework-MobSF
 		pip install -r requirements.txt --upgrade
+		./setup.sh
 	fi
 fi
 
