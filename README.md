@@ -68,20 +68,38 @@ Simple Vulnerability Manager se integra con todas las siguientes tool externas p
 
 **Services Scanner**
 
-* Qualys
+* [Qualys Community](https://www.qualys.com/community-edition/) y Qualys Enterprise
 
-* Nessus
+* [Nessus](https://www.tenable.com/products/nessus/nessus-professional)
 
-* OpenVAS
+* [OpenVAS](http://www.openvas.org/)
+
+**Android Tools**
+
+* [ApkTools](https://ibotpeaches.github.io/Apktool/)
+
+* [Enjarify](https://github.com/google/enjarify)
+
+* [JD-Gui](http://jd.benow.ca/)
+
+* [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF)
+
+* [QARK](https://github.com/linkedin/qark)
+
+* [AndroBugs_Framework](https://github.com/AndroBugs/AndroBugs_Framework)
 
 
 # Presentaciones
+
+Simple Vulnerability Manager fue presentado en las siguientes Conferencias de Seguridad Informática
 
 * [Ekoparty Security Conference](https://www.ekoparty.org) : Ekolabs [2016](https://twitter.com/SimpleVulnManag/status/792072988204134402)
 
 * [Andsec Security Conference](https://www.andsec.org) : [2017](https://twitter.com/SimpleVulnManag/status/871576216112963586)
 
 # Links
+
+Sígueme en las redes sociales para estar enterado de las novedades
 
 * Twitter: [@SimpleVulnManag](https://twitter.com/SimpleVulnManag) [![](https://img.shields.io/twitter/follow/SimpleVulnManag.svg?label=Follow&style=social)](https://twitter.com/SimpleVulnManag)
 
