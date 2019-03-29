@@ -64,6 +64,8 @@ Simple Vulnerability Manager se integra con todas las siguientes tool externas p
 
 * [Burpsuite](https://portswigger.net/burp)
 
+* [Netsparker](https://www.netsparker.com/)
+
 * [Arachni Web Application](https://www.arachni-scanner.com/)
 
 **Services Scanner**
