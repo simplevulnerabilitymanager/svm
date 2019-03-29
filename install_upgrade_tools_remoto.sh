@@ -27,6 +27,13 @@ export DEBIAN_FRONTEND="noninteractive"
 #echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 #dpkg-reconfigure debconf
 
+userid=`id -u`
+if [ "${userid}" != '0' ]; then
+  echo '[Error]: You must run this setup script with root privileges.'
+  echo
+  exit 1
+fi
+
 apt-get update
 apt-get install git -y
 apt-get install wget -y
@@ -75,8 +82,8 @@ if [ $TOOL == "Recon-ng" ] || [ $TOOL == "Todas" ] ; then
 	apt-get install dos2unix -y
 	apt-get install libxml2-dev -y
 	apt-get install libxslt1-dev -y
-	apt-get install zlib1g-dev -y
-	git clone https://LaNMaSteR53@bitbucket.org/LaNMaSteR53/recon-ng
+	apt-get install zlib1g-dev -y	
+	git clone --depth 1 https://bitbucket.org/LaNMaSteR53/recon-ng
 	if [ $? -ne 0 ] ; then
 		cd recon-ng
 		git pull
@@ -90,7 +97,8 @@ fi
 #Information Tools (EyeWitness)
 if [ $TOOL == "EyeWitness" ] || [ $TOOL == "Todas" ] ; then
 	cd
-	git clone https://github.com/ChrisTruncer/EyeWitness
+	apt-get install python-levenshtein
+	git clone --depth 1 https://github.com/ChrisTruncer/EyeWitness
 	if [ $? -ne 0 ] ; then
 		cd EyeWitness
 		git pull
@@ -100,6 +108,7 @@ if [ $TOOL == "EyeWitness" ] || [ $TOOL == "Todas" ] ; then
 		chmod 755 setup.sh
 		./setup.sh
 	fi
+	
 fi
 
 
@@ -150,7 +159,7 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 		cd /etc/apt/
 		grep -R mrazavi *
 		if [ $? -ne 0 ] ; then
-			echo "deb http://ppa.launchpad.net/mrazavi/openvas/ubuntu $CODENAME main" > /etc/apt/sources.list.d/openvas.list
+			echo "deb http://ppa.launchpad.net/mrazavi/openvas/ubuntu $CODENAME main" | tee /etc/apt/sources.list.d/openvas.list
 			# OpenPGP keys: - https://launchpad.net/~mrazavi
 			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 57A42CB9
 			#apt-key adv --recv-key --keyserver keyserver.ubuntu.com 90A921F1
@@ -165,11 +174,9 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 			openvasmd --create-user=admin --role=Admin
 			openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM
 		fi
-
-		cd
 	fi
 
-
+	cd
 
 	# Configurar la Web de OpenVAS para poder acceder remotamente
 	which ifconfig
@@ -194,105 +201,6 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	service openvas-scanner start
 	service openvas-manager start
 
-
-#grep "mrazavi" /etc/apt/sources.list
-#if [ $? -ne 0 ] ; then
-#	echo "deb http://ppa.launchpad.net/mrazavi/openvas/ubuntu xenial main" >> /etc/apt/sources.list
-#	echo "deb http://ppa.launchpad.net/mrazavi/greenbone-security-assistant/ubuntu devel main" >> /etc/apt/sources.list
-#	# OpenPGP keys: - https://launchpad.net/~mrazavi
-#	apt-key adv --recv-key --keyserver keyserver.ubuntu.com 57A42CB9
-#	apt-key adv --recv-key --keyserver keyserver.ubuntu.com 90A921F1
-#	apt-get update
-#
-#	apt-get install greenbone-security-assistant -y
-#	#apt-get install openvas-cli -y
-#	#apt-get install openvas-manager -y
-#	#apt-get install openvas-scanner -y
-#	apt-get install openvas9 -y
-#
-#	database_version=$(openvasmd --check-alerts 2>&1)
-#	if [ ! -z "$database_version" ] ; then
-#		openvasmd --migrate
-#		openvasmd --update --progress
-#		openvasmd --rebuild --progress
-#	fi
-
-#	#openvas-mkcert -f				#Openvas 8
-#	#openvas-mkcert-client -n -i		#Openvas 8
-#	#LOG: openvas_server_verify: the certificate has expired
-#	#FIX:Updating Scanner Certificates ( https://svn.wald.intevation.org/svn/openvas/trunk/openvas-manager/INSTALL )
-#	#openvas-mkcert					#Openvas 8
-#	#Status message: Service temporarily down openvas
-#	#openvas-mkcert-client -n om -i	#Openvas 8
-#	#
-#	mkdir -p /var/lib/openvas/CA
-#	mkdir -p /var/lib/openvas/private/CA/
-#	openvasmd --create-scanner-ca-pub /var/lib/openvas/CA/cacert.pem
-#	openssl verify -CAfile /var/lib/openvas/CA/cacert.pem /var/lib/openvas/CA/servercert.pem
-#	openssl verify -CAfile /var/lib/openvas/CA/cacert.pem /var/lib/openvas/CA/clientcert.pem
-#	#wget "https://svn.wald.intevation.org/svn/openvas/branches/openvas-scanner-5.0/tools/openvas-manage-certs.sh" -o openvas-manage-certs.sh
-#	#chmod 755 openvas-manage-certs.sh
-#	#openvas-manage-certs -V
-#	openvasmd --modify-scanner $(openvasmd --get-scanners) --scanner-ca-pub /var/lib/openvas/CA/cacert.pem --scanner-key-pub /var/lib/openvas/CA/clientcert.pem --scanner-key-priv /var/lib/openvas/private/CA/clientkey.pem
-#
-#
-#	#openvas-nvt-sync ; openvas-scapdata-sync ; openvas-certdata-sync	#Openvas 8
-#	greenbone-certdata-sync; greenbone-nvt-sync ; greenbone-scapdata-sync	#Openvas 9
-#
-#	IP_ADDRESS=$(ifconfig eth0 | awk '{ print $2}' | grep -oE "([0-9]{1,3}[\.]){3}[0-9]{1,3}")
-#	sed -i s/--listen=127.0.0.1/--listen=$IP_ADDRESS/g /lib/systemd/system/greenbone-security-assistant.service
-#	sed -i s/--mlisten=127.0.0.1/--mlisten=$IP_ADDRESS/g /lib/systemd/system/greenbone-security-assistant.service
-#	sed -i s/--listen=127.0.0.1/--listen=$IP_ADDRESS/g /lib/systemd/system/openvas-manager.service
-#	systemctl daemon-reload
-#
-#	service greenbone-security-assistant start
-#	service openvas-manager start
-#	service openvas-scanner start
-#
-#	openvasmd --create-user=admin --role=Admin
-#	openvasmd --user=admin --new-password=OpenVAS	#Reset password
-#else
-#	#Openvas Remove
-#	#apt-get remove --purge greenbone-security-assistant openvas-cli openvas-manager openvas-scanner
-#	#dpkg --purge --force-depends greenbone-security-assistant openvas-cli openvas-manager openvas-scanner
-#	#
-#	#Remover por completo toda la configuracion
-#	#OIFS="$IFS"
-#	#IFS=$'\n'
-#	#for x in $(dpkg -S openvas) ; do
-#	#	x1=$(echo $x|cut -d':' -f1)
-#	#	x2=$(echo $x|cut -d':' -f2|sed 's/ //g')
-#	#	if [ "$x1" == "openvas-manager-common" ] ; then
-#	#		rm -fr $x2
-#	#	fi
-#	#	if [ "$x1" == "greenbone-security-assistant-common" ] ; then
-#	#		rm -fr $x2
-#	#	fi
-#	#	if [ "$x1" == "libopenvas9" ] ; then
-#	#		rm -fr $x2
-#	#	fi
-#	#done
-#
-#
-#	#Openvas Reinstall
-#	#apt-get -o Dpkg::Options::="--force-confmiss" -o Dpkg::Options::="--force-confnew" install --reinstall greenbone-security-assistant openvas-cli openvas-manager openvas-scanner
-#
-#	apt-get install greenbone-security-assistant -y
-#	apt-get install openvas-cli -y
-#	apt-get install openvas-manager -y
-#	apt-get install openvas-scanner -y
-#
-#	database_version=$(openvasmd --check-alerts 2>&1)
-#	if [ ! -z "$database_version" ] ; then
-#		openvasmd --migrate
-#		openvasmd --update --progress
-#		openvasmd --rebuild --progress
-#	fi
-#
-#	#openvas-nvt-sync ; openvas-scapdata-sync ; openvas-certdata-sync	#Openvas 8
-#	greenbone-certdata-sync; greenbone-nvt-sync ; greenbone-scapdata-sync	#Openvas 9
-#fi
-
 fi
 
 if [ $TOOL == "OpenVASPlugins" ] || [ $TOOL == "Todas" ] ; then
@@ -301,6 +209,7 @@ if [ $TOOL == "OpenVASPlugins" ] || [ $TOOL == "Todas" ] ; then
 	openvas-nvt-sync ; openvas-scapdata-sync ; openvas-certdata-sync
 
 fi
+
 #Service Scan Tools (NessusPlugins)
 if [ $TOOL == "NessusPlugins" ] || [ $TOOL == "Todas" ] ; then
 	cd
@@ -366,12 +275,12 @@ fi
 if [ $TOOL == "ApkTools" ] || [ $TOOL == "Todas" ] ; then
 	cd
 	mkdir apktool
-	cd apktool
+	cd apktool		 
 	wget https://bitbucket.org/iBotPeaches/apktool/downloads/ -O index.html
 	UltimaVersion=$(grep "apktool_" index.html  | head -1  | awk -F '"' '{print $2}' | awk -F '/' '{print $5}')
 	LinkDownload=$(grep "apktool_" index.html  | head -1  | awk -F '"' '{print $2}')
 	if [ ! -f $UltimaVersion ] ; then
-		wget https://bitbucket.org/$LinkDownload -O $UltimaVersion
+		wget https://bitbucket.org$LinkDownload -O $UltimaVersion
 	fi
 	rm -fr index.html
 fi
@@ -386,7 +295,7 @@ if [ $TOOL == "Drozer" ] || [ $TOOL == "Todas" ] ; then
 	apt-get install python-service-identity -y
 	pip install --upgrade pyopenssl
 	rm -fr drozer	#Opcional
-	git clone https://github.com/mwrlabs/drozer
+	git clone --depth 1 https://github.com/mwrlabs/drozer
 	if [ $? -ne 0 ] ; then
 		cd drozer
 		git pull
@@ -405,7 +314,7 @@ fi
 if [ $TOOL == "Enjarify" ] || [ $TOOL == "Todas" ] ; then
 	cd
 	rm -fr enjarify
-	git clone https://github.com/google/enjarify
+	git clone --depth 1 https://github.com/Storyyeller/enjarify
 	if [ $? -ne 0 ] ; then
 		cd enjarify
 		git pull
@@ -416,7 +325,7 @@ fi
 if [ $TOOL == "Qark" ] || [ $TOOL == "Todas" ] ; then
 	cd
 	rm -fr qark	#Opcional
-	git clone https://github.com/linkedin/qark
+	git clone --depth 1 https://github.com/linkedin/qark
 	if [ $? -ne 0 ] ; then
 		cd qark
 		git pull
@@ -456,7 +365,7 @@ if [ $TOOL == "MobSF" ] || [ $TOOL == "Todas" ] ; then
 
 	cd
 	rm -fr Mobile-Security-Framework-MobSF	#Opcional
-	git clone https://github.com/ajinabraham/Mobile-Security-Framework-MobSF
+	git clone --depth 1 https://github.com/ajinabraham/Mobile-Security-Framework-MobSF
 	#wget https://github.com/ajinabraham/Mobile-Security-Framework-MobSF/archive/v0.9.3.tar.gz -O Mobile-Security-Framework-MobSF.tar.gz
 	# git clone https://github.com/ajinabraham/Mobile-Security-Framework-MobSF/tree/v0.9.3
 	if [ $? -ne 0 ] ; then
@@ -474,7 +383,7 @@ fi
 if [ $TOOL == "AndroBugs_Framework" ] || [ $TOOL == "Todas" ] ; then
 	cd
 	rm -fr AndroBugs_Framework	#Opcional
-	git clone https://github.com/AndroBugs/AndroBugs_Framework
+	git clone --depth 1 https://github.com/AndroBugs/AndroBugs_Framework
 	if [ $? -ne 0 ] ; then
 		cd AndroBugs_Framework
 		git pull
@@ -483,7 +392,9 @@ fi
 
 #Restore
 #echo 'debconf debconf/frontend select Dialog' | debconf-set-selections
-echo "Termino"
+echo "###################"
+echo "      Termino"
+echo "###################"
 
 
 
