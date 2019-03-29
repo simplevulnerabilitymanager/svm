@@ -12,10 +12,7 @@ Una de las características más interesantes de Simple Vulnerability Manager es
 
 
 # Instalación
-Los archivos que se encuentran en este repositorio son solo los script del programa SimpleVulnerabilityManager, no es el programa completo.
-
-Descargar el programa completo:
-https://www.simplevulnerabilitymanager.com
+Es muy simple, descarga el instalador desde https://www.simplevulnerabilitymanager.com y sigue las instrucciones. No tienes que configurar practicamente nada para que lo comiences a utilizar inmediatamente.
 
 
 # Capturas de Pantalla
