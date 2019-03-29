@@ -1,10 +1,5 @@
-[![](https://img.shields.io/github/downloads/simplevulnerabilitymanager/svm/total.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/download/v2.0.3/Simple_Vulnerability_Manager_Install_Windows_v2.zip)
-
-[![](https://img.shields.io/github/issues/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/issues)
-
 [![](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/tag/v2.0.3)
 
-[![](https://img.shields.io/website-up-down-green-red/https/shields.io.svg?label=SimpleVulnerabilityManager-Website)](https://www.simplevulnerabilitymanager.com/)
 
 # Descripción
 Simple Vulnerability Manager es la herramienta perfecta para cualquier analista de vulnerabilidades, ya que con tan solo un par de clicks se podrán tanto realizar completos análisis sobre las debilidades de un sistema como generar informes sobre los mismos que ayudarán a comprender y solucionar los distintos problemas que estas vulnerabilidades puedan estar causando.
@@ -17,50 +12,116 @@ Una de las características más interesantes de Simple Vulnerability Manager es
 
 
 # Instalación
-Estos son solo los script del programa SimpleVulnerabilityManager, no es el programa completo.
-
-Descargar el programa completo en:
-https://www.simplevulnerabilitymanager.com
+Es muy simple, descarga el instalador desde https://www.simplevulnerabilitymanager.com y sigue las instrucciones. No tienes que configurar practicamente nada para que lo comiences a utilizar inmediatamente.
 
 
-
-
---
-# Description
-Program to perform vulnerability analysis and automatically generate a report
-
-These are just the SimpleVulnerabilityManager program script, it is not the complete program. 
-
-# Download
-To download the complete program go to: https://www.simplevulnerabilitymanager.com/?lang=en
-
-
+# Capturas de Pantalla
 
 ![Screenshot](svm_screenshot1.png)
---
+Pantalla Principal
+
+
+
 ![Screenshot](svm_screenshot2.png)
---
+Lista de vulnerabilidades disponibles para agregar al proyecto.
+
+
+
 ![Screenshot](svm_screenshot3.png)
---
+Detalle de una vulnerabilidad que existe en el proyecto.
+
+
+
 ![Screenshot](svm_screenshot4.png)
---
+Primera página del reporte generado en Microsoft Word.
+
+
 ![Screenshot](svm_screenshot5.png)
---
+Segunda pagina del reporte generado
+
+
 ![Screenshot](svm_screenshot6.png)
---
-![Screenshot](svm_screenshot7.png)
---
+
+
 ![Screenshot](svm_screenshot8.png)
---
-![Screenshot](svm_screenshot9.png)
---
+Detalle de vulnerabilidades detectadas
+
+
 ![Screenshot](svm_screenshot10.png)
---
+Graficos estadisticos con las vulnerabilidades detectadas. (Hay graficos 9 tipos de graficos estadisticos para elegir)
+
+
 ![Screenshot](svm_screenshot11.png)
+Anexo con los detalle de la vulnerabilidad donde es afectada.
+
+# Tools
+
+Simple Vulnerability Manager se integra con todas las siguientes tool externas para poder ejecutarlas rapidamente con un solo click, lo que te permite ahorrar tiempo en la ejecucion de los escaneos automatizados.
+
+**Web Scanner**
+
+* [Acunetix](https://www.acunetix.com/)
+
+* [Burpsuite](https://portswigger.net/burp)
+
+* [Netsparker](https://www.netsparker.com/)
+
+* [Arachni Web Application](https://www.arachni-scanner.com/)
+
+**Services Scanner**
+
+* [Qualys Community](https://www.qualys.com/community-edition/) y Qualys Enterprise
+
+* [Nessus](https://www.tenable.com/products/nessus/nessus-professional)
+
+* [OpenVAS](http://www.openvas.org/)
+
+* [Nmap](https://nmap.org/)
+
+**Android Tools**
+
+* [ApkTools](https://ibotpeaches.github.io/Apktool/)
+
+* [Enjarify](https://github.com/google/enjarify)
+
+* [JD-Gui](http://jd.benow.ca/)
+
+* [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF)
+
+* [QARK](https://github.com/linkedin/qark)
+
+* [AndroBugs_Framework](https://github.com/AndroBugs/AndroBugs_Framework)
+
+**Information Tools**
+
+* [Recon-ng](https://bitbucket.org/LaNMaSteR53/recon-ng)
+
+* [EyeWitness](https://github.com/ChrisTruncer/EyeWitness)
+
+
+# Presentaciones
+
+Simple Vulnerability Manager fue presentado en las siguientes Conferencias de Seguridad Informática
+
+* [Ekoparty Security Conference](https://www.ekoparty.org) : Ekolabs [2016](https://twitter.com/SimpleVulnManag/status/792072988204134402)
+
+* [Andsec Security Conference](https://www.andsec.org) : [2017](https://twitter.com/SimpleVulnManag/status/871576216112963586)
+
+# Links
+
+Sígueme en las redes sociales para estar enterado de las novedades
+
+* Twitter: [@SimpleVulnManag](https://twitter.com/SimpleVulnManag) [![](https://img.shields.io/twitter/follow/SimpleVulnManag.svg?label=Follow&style=social)](https://twitter.com/SimpleVulnManag)
+
+* Facebook: [@SimpleVulnerabilityManager](https://www.facebook.com/simplevulnerabilitymanager)
+
+* Instagram: [@SimpleVulnerabilityManager](https://www.instagram.com/simplevulnerabilitymanager/)
+
+* Youtube: [Canal](https://www.youtube.com/channel/UCDXH-m2SqQsnb91UUsQxlrQ?view_as=subscriber)
+
+* Homepage: [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
 
 
 
-[![Twitter](https://img.shields.io/badge/Twitter-SimpleVulnManag-blue.svg)](https://twitter.com/SimpleVulnManag)
 
-[![](https://img.shields.io/twitter/follow/SimpleVulnManag.svg?label=Follow&style=social)](https://twitter.com/SimpleVulnManag)
 
