@@ -1,3 +1,5 @@
+# Simple Vulnerability Manager
+
 [![](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/tag/v2.0.3)
 
 
@@ -5,7 +7,7 @@
 Simple Vulnerability Manager es la herramienta perfecta para cualquier analista de vulnerabilidades, ya que con tan solo un par de clicks se podrán tanto realizar completos análisis sobre las debilidades de un sistema como generar informes sobre los mismos que ayudarán a comprender y solucionar los distintos problemas que estas vulnerabilidades puedan estar causando.
 
 
-Esta aplicación incluye una muy completa base de datos que contiene la gran mayoría de vulnerabilidades que un equipo puede sufrir organizadas en **Web Scanners**, **Service Scanners**, **Static Scanners** y **Mobile**. Dentro de estas secciones, junto a la vulnerabilidad pertinente, los usuarios podrán encontrar una breve descripción en la que se especifica que es lo que crea el problema, el impacto que este tiene sobre el sistema y los pasos que se han de seguir para solucionarla.
+Esta aplicación incluye una base de datos que contiene la gran mayoría de vulnerabilidades que un equipo puede sufrir, organizadas en **Web Scanners**, **Service Scanners**, **Static Scanners** y **Mobile**. Dentro de estas secciones, junto a la vulnerabilidad pertinente, los usuarios podrán encontrar una breve descripción en la que se especifica que es lo que crea el problema, el impacto que este tiene sobre el sistema y los pasos que se han de seguir para solucionarla.
 
 
 Una de las características más interesantes de Simple Vulnerability Manager es la posibilidad de crear y gestionar proyectos a los clientes a los que se estén realizando seguimientos. Estos proyectos servirán para añadir comentarios personalizados y capturas de pantalla que servirán como prueba individual para cada una de las vulnerabilidades que hayan sido detectadas en las web y direcciones IP.
@@ -21,38 +23,9 @@ Es muy simple, descarga el instalador desde https://www.simplevulnerabilitymanag
 Pantalla Principal
 
 
-
 ![Screenshot](svm_screenshot2.png)
 Lista de vulnerabilidades disponibles para agregar al proyecto.
 
-
-
-![Screenshot](svm_screenshot3.png)
-Detalle de una vulnerabilidad que existe en el proyecto.
-
-
-
-![Screenshot](svm_screenshot4.png)
-Primera página del reporte generado en Microsoft Word.
-
-
-![Screenshot](svm_screenshot5.png)
-Segunda pagina del reporte generado
-
-
-![Screenshot](svm_screenshot6.png)
-
-
-![Screenshot](svm_screenshot8.png)
-Detalle de vulnerabilidades detectadas
-
-
-![Screenshot](svm_screenshot10.png)
-Graficos estadisticos con las vulnerabilidades detectadas. (Hay graficos 9 tipos de graficos estadisticos para elegir)
-
-
-![Screenshot](svm_screenshot11.png)
-Anexo con los detalle de la vulnerabilidad donde es afectada.
 
 # Tools
 
@@ -92,12 +65,17 @@ Simple Vulnerability Manager se integra con todas las siguientes tool externas p
 
 * [AndroBugs_Framework](https://github.com/AndroBugs/AndroBugs_Framework)
 
+* [Uber Apk Signer](https://github.com/patrickfav/uber-apk-signer)
+
 **Information Tools**
 
 * [Recon-ng](https://bitbucket.org/LaNMaSteR53/recon-ng)
 
 * [EyeWitness](https://github.com/ChrisTruncer/EyeWitness)
 
+# Preguntas y Respuestas Frecuentes (FAQ)
+
+[Wiki](https://github.com/simplevulnerabilitymanager/svm/wiki)
 
 # Presentaciones
 
@@ -118,6 +96,8 @@ Sígueme en las redes sociales para estar enterado de las novedades
 * Instagram: [@SimpleVulnerabilityManager](https://www.instagram.com/simplevulnerabilitymanager/)
 
 * Youtube: [Canal](https://www.youtube.com/channel/UCDXH-m2SqQsnb91UUsQxlrQ?view_as=subscriber)
+
+* GitHub: ![Watching](watch_git.jpg)
 
 * Homepage: [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
 
