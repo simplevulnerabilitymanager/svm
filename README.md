@@ -23,23 +23,9 @@ Es muy simple, descarga el instalador desde https://www.simplevulnerabilitymanag
 Pantalla Principal
 
 
-
 ![Screenshot](svm_screenshot2.png)
 Lista de vulnerabilidades disponibles para agregar al proyecto.
 
-
-
-![Screenshot](svm_screenshot3.png)
-Detalle de una vulnerabilidad que existe en el proyecto.
-
-
-
-![Screenshot](svm_screenshot4.png)
-Primera página del reporte generado en Microsoft Word.
-
-
-![Screenshot](svm_screenshot5.png)
-Segunda pagina del reporte generado
 
 # Tools
 
@@ -87,6 +73,9 @@ Simple Vulnerability Manager se integra con todas las siguientes tool externas p
 
 * [EyeWitness](https://github.com/ChrisTruncer/EyeWitness)
 
+# Preguntas y Respuestas Frecuentes (FAQ)
+
+[Wiki](https://github.com/simplevulnerabilitymanager/svm/wiki)
 
 # Presentaciones
 
