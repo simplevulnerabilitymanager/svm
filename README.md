@@ -74,6 +74,8 @@ Simple Vulnerability Manager se integra con todas las siguientes tool externas p
 
 * [OpenVAS](http://www.openvas.org/)
 
+* [Nmap](https://nmap.org/)
+
 **Android Tools**
 
 * [ApkTools](https://ibotpeaches.github.io/Apktool/)
@@ -87,6 +89,12 @@ Simple Vulnerability Manager se integra con todas las siguientes tool externas p
 * [QARK](https://github.com/linkedin/qark)
 
 * [AndroBugs_Framework](https://github.com/AndroBugs/AndroBugs_Framework)
+
+**Information Tools**
+
+* [Recon-ng](https://bitbucket.org/LaNMaSteR53/recon-ng)
+
+* [EyeWitness](https://github.com/ChrisTruncer/EyeWitness)
 
 
 # Presentaciones
