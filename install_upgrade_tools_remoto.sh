@@ -332,11 +332,13 @@ if [ $TOOL == "Qark" ] || [ $TOOL == "Todas" ] ; then
 	else
 		cd qark
 		echo "Ejecute en la terminal Linux los siguientes comandos:"
-		echo "cd /root/qark/qark/"
-		echo "python ./qarkMain.py"
-		echo "cd /root/qark/qark/android-sdk_r24.3.4-linux/android-sdk-linux"
+		echo "cd /$HOME/qark/"
+		echo "wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O sdk-tools-linux-4333796.zip"
+		echo "unzip sdk-tools-linux-4333796.zip"
 		echo "tools/android update sdk --no-ui"
-
+		
+		pip install -r requirements.txt
+		
 		python ./setup.py  install
 	fi
 fi

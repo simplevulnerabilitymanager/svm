@@ -2,10 +2,10 @@
 DirApp=$1
 APK=$(echo $2 | sed 's/"//g')
 
-cd $DirApp/qark
+cd $DirApp
 
 rm -fr report/build/ logs/ exploit/
-python ./qarkMain.py --acceptterms ACCEPTTERMS --source 1 --pathtoapk "/tmp/$APK.apk" --debug 10 --exploit 1 --reportdir "Report_$APK"
+qark --apk "/tmp/$APK.apk" --debug --exploit-apk --report-type html --sdk-path tools/
 if [ -f build/qark/app/build/outputs/apk/app-debug.apk ] ; then
 	mkdir exploit/
 	cp build/qark/app/build/outputs/apk/app-debug.apk exploit/
