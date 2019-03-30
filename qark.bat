@@ -26,7 +26,7 @@ rem $git clone https://github.com/linkedin/qark
 :retry
 cls
 echo Ejecutar en el server %Server% el comando:
-echo cd "%DirApp%" ; chmod 755 qark.sh ; ./qark.sh "%DirApp%" "%FileApk%_%Timestamp%"
+echo cd "%DirApp%" ; chmod 755 ./qark.sh ; ./qark.sh "%DirApp%" "%FileApk%_%Timestamp%"
 echo Solo cuando termine, presione una tecla para obtener el reporte
 set /p respuesta="Desea continuar? (y/n)"
 pause

@@ -313,7 +313,7 @@ fi
 #Mobile Tools (Enjarify)
 if [ $TOOL == "Enjarify" ] || [ $TOOL == "Todas" ] ; then
 	cd
-	rm -fr enjarify
+	rm -fr enjarify #Opcional
 	git clone --depth 1 https://github.com/Storyyeller/enjarify
 	if [ $? -ne 0 ] ; then
 		cd enjarify
