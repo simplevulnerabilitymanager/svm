@@ -15,4 +15,8 @@ set Password=toor
 mkdir Reportes
 mkdir Reportes\test\
 copy "%WORKSPACE%\qark.bat" c:\svm_test\
+cd c:\svm_test\
+mkdir Reportes
+mkdir Reportes\test\
+echo y | plink.exe -ssh -P 22 -l %Username% -pw %Password% -C %Server% 'ls'
 call qark.bat %DirApp% %PathAPK% %FileApk% %Timestamp% %Documentacion% %Server% %Username% %Password%
