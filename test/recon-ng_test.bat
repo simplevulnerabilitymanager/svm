@@ -7,7 +7,7 @@ set Server=192.168.139.153
 set Username=root
 set Password=toor
 
-copy %WORKSPACE%\recon_ng_remote.bat c:\svm_test\
+copy "%WORKSPACE%\recon_ng_remote.bat" c:\svm_test\
 cd c:\svm_test\
 mkdir Reportes
 mkdir Reportes\test\
