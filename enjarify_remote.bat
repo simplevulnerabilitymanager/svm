@@ -23,6 +23,13 @@ rem $git clone https://github.com/google/enjarify
 "%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/EnjarifyReport - %FileApk%_%Timestamp%.jar" %Documentacion%
 "%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/EnjarifyReport - %FileApk%_%Timestamp%.jar' '/tmp/%FileApk%_%Timestamp%.apk'"
 
-echo %Documentacion%
-pause
+if exist %Documentacion% (
+	echo %Documentacion%
+	pause
+) else (
+	echo "File not found"
+	pause
+	exit 1
+)
+
 
