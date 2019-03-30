@@ -14,5 +14,5 @@ set Password=toor
 
 mkdir Reportes
 mkdir Reportes\test\
-copy "%WORKSPACE%\test\qark.bat" c:\svm_test\
+copy "%WORKSPACE%\qark.bat" c:\svm_test\
 call qark.bat %DirApp% %PathAPK% %FileApk% %Timestamp% %Documentacion% %Server% %Username% %Password%
