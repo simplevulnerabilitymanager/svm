@@ -7,4 +7,6 @@ set Server=192.168.139.153
 set Username=root
 set Password=toor
 
+copy recon_ng_remote.bat c:\svm_test\
+cd c:\svm_test\
 call recon_ng_remote.bat %Proyecto% %Domains% %Documentacion% %Timestamp% %Server% %Username% %Password%
