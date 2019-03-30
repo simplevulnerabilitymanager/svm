@@ -1,6 +1,6 @@
 setlocal
 set Proyecto="test"
-set IP="127.0.0.1"
+set IP="192.168.139.153"
 set Timestamp=30_03_2019-00_11_56
 set Documentacion="c:\svm_test\Reportes\test\"
 set AppExe="c:\Program Files (x86)\Nmap\nmap.exe"
