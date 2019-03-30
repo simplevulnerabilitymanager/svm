@@ -7,7 +7,7 @@ set AppExe="c:\Program Files (x86)\Nmap\nmap.exe"
 
 
 
-copy %WORKSPACE%\nmap_scan.bat c:\svm_test\
+copy "%WORKSPACE%\nmap_scan.bat" c:\svm_test\
 cd c:\svm_test\
 mkdir Reportes
 mkdir Reportes\test\
