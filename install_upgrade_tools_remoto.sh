@@ -54,6 +54,7 @@ apt-get install gcc -y
 apt-get install awk -y
 apt-get install original-awk -y
 apt-get install xmlstarlet -y
+apt-get install unzip -y
 #apt-get install basez -y
 
 #Web Scan Tools (Arachni)
@@ -329,13 +330,16 @@ if [ $TOOL == "Qark" ] || [ $TOOL == "Todas" ] ; then
 	if [ $? -ne 0 ] ; then
 		cd qark
 		git pull
+		pip install -r requirements.txt
+		
+		python ./setup.py  install
 	else
 		cd qark
-		echo "Ejecute en la terminal Linux los siguientes comandos:"
-		echo "cd /$HOME/qark/"
-		echo "wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O sdk-tools-linux-4333796.zip"
-		echo "unzip sdk-tools-linux-4333796.zip"
-		echo "tools/android update sdk --no-ui"
+		
+		cd $HOME/qark/
+		wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O sdk-tools-linux-4333796.zip
+		unzip sdk-tools-linux-4333796.zip
+		echo y | tools/android update sdk --no-ui
 		
 		pip install -r requirements.txt
 		
@@ -401,7 +405,3 @@ fi
 echo "###################"
 echo "      Termino"
 echo "###################"
-
-
-
-

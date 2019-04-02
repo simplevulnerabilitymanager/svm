@@ -51,8 +51,10 @@ call :actualizar install_upgrade_tools_remoto.bat"
 call :actualizar install_upgrade_tools_remoto.sh"
 call :actualizar update_all_scripts.bat"
 
+pause
+
+EXIT /B 0
+
 :actualizar
 "%~dp0curl.exe" -o %1 https://raw.githubusercontent.com/simplevulnerabilitymanager/svm/master/%1
 EXIT /B 0
-
-pause
