@@ -103,9 +103,9 @@ Sígueme en las redes sociales para estar enterado de las novedades
 
 
 # Licencia
-Solo los scripts para Windows (.bat) y los script para Linux (.sh) son OpenSource con licencia GPL, el resto de los programas tiene sus respectivas licencia.
+Solo los scripts para Windows (.bat) y los script para Linux (.sh) son OpenSource con licencia GPL, el resto de los programas tienen sus respectivas licencia.
 
-El ejecutable svm.exe es de licencia freeware y solo deberia utilizarse de forma personal. Para uso en empresas debe adquirirse la licencia **Pro** de SVM. Mas info a [contacto@simplevulnerabilitymanager.com](mailto:contacto@simplevulnerabilitymanager.com) y en [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
+El ejecutable "svm.exe" es de licencia freeware y solo deberia utilizarse para uso personal. Para uso en empresas debe adquirirse la licencia **Pro** de SVM. Mas info a [contacto@simplevulnerabilitymanager.com](mailto:contacto@simplevulnerabilitymanager.com) y en [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
 
 
 
