@@ -22,7 +22,6 @@ Es muy simple, descarga el instalador desde https://www.simplevulnerabilitymanag
 ![Screenshot](svm_screenshot1.png)
 Pantalla Principal
 
-
 ![Screenshot](svm_screenshot2.png)
 Lista de vulnerabilidades disponibles para agregar al proyecto.
 
@@ -85,8 +84,7 @@ Simple Vulnerability Manager fue presentado en las siguientes Conferencias de Se
 
 * [Andsec Security Conference](https://www.andsec.org) : [2017](https://twitter.com/SimpleVulnManag/status/871576216112963586)
 
-Tambien fue presentado en el capitulo 21 (Minuto 48:40) de Secure Podcast en las Vegas 2018
-* [Spotify](https://open.spotify.com/episode/76DLj25Z3gWWFnfTlbpNrN)
+* [Spotify - Secure Podcast](https://open.spotify.com/episode/76DLj25Z3gWWFnfTlbpNrN): Episodio 012 (Minuto 48:40) - Las Vegas [2018](https://open.spotify.com/episode/76DLj25Z3gWWFnfTlbpNrN)
 
 
 # Links
