@@ -85,7 +85,7 @@ Simple Vulnerability Manager fue presentado en las siguientes Conferencias de Se
 
 * [Andsec Security Conference](https://www.andsec.org) : [2017](https://twitter.com/SimpleVulnManag/status/871576216112963586)
 
-Tambien fue presentado en el capitulo 21 de Secure Podcast en las Vegas 2018
+Tambien fue presentado en el capitulo 21 (Minuto 48:40) de Secure Podcast en las Vegas 2018
 * [Spotify](https://open.spotify.com/episode/76DLj25Z3gWWFnfTlbpNrN)
 
 
