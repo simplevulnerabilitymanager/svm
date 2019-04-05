@@ -85,6 +85,10 @@ Simple Vulnerability Manager fue presentado en las siguientes Conferencias de Se
 
 * [Andsec Security Conference](https://www.andsec.org) : [2017](https://twitter.com/SimpleVulnManag/status/871576216112963586)
 
+Tambien fue presentado en el capitulo 21 (Minuto 48:40) de Secure Podcast en las Vegas 2018
+* [Spotify](https://open.spotify.com/episode/76DLj25Z3gWWFnfTlbpNrN)
+
+
 # Links
 
 Sígueme en las redes sociales para estar enterado de las novedades
@@ -102,6 +106,10 @@ Sígueme en las redes sociales para estar enterado de las novedades
 * Homepage: [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
 
 
+# Licencia
+Solo los scripts para Windows (.bat) y los script para Linux (.sh) son OpenSource con licencia GPL, el resto de los programas tienen sus respectivas licencia.
+
+El ejecutable "svm.exe" es de licencia freeware y solo deberia utilizarse para uso personal. Para uso en empresas debe adquirirse la licencia **Pro** de SVM. Mas info a [contacto@simplevulnerabilitymanager.com](mailto:contacto@simplevulnerabilitymanager.com) y en [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
 
 
 
