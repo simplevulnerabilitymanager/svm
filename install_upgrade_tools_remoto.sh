@@ -34,7 +34,7 @@ if [ "${userid}" != '0' ]; then
   exit 1
 fi
 
-apt-get update
+apt-get -yq update
 apt-get install git -y
 apt-get install wget -y
 apt-get install python -y
