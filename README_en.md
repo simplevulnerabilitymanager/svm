@@ -1,4 +1,4 @@
-[Spanish](README.md) | English | [Russian](README_en.md)
+[Spanish](README.md) | English | [Russian](README_rus.md)
 
 # Simple Vulnerability Manager
 
