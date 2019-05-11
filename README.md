@@ -1,3 +1,5 @@
+Spanish | [English](README_en.md) | [Russian](README_en.md)
+
 # Simple Vulnerability Manager
 
 [![](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/tag/v2.0.3)
