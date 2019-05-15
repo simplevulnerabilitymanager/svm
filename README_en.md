@@ -6,17 +6,16 @@
 
 
 # Description
-Simple Vulnerability Manager is the perfect tool for any vulnerability analyst, who with just a couple of clicks can perform a complete analysis of the weaknesses of a system of them. These vulnerabilities may be causing.
-
+Simple Vulnerability Manager is the perfect tool for any vulnerability analyst.  Just a couple of clicks and it will be possible to carry out full analyzes on system’s the weaknesses and generate reports on them that will help to understand them and solve the different problems that these vulnerabilities may be causing.
 
 This application includes a database that contains the vast majority of vulnerabilities that a computer can suffer, organized in **Web Scanners**, **Service Scanners**, **Static Scanners** and **Mobile**. Within these sections, along with the relevant vulnerability, users can find a brief description that specifies what creates the problem, the impact it has on the system and the steps to be followed to solve it.
 
 
-One of the most interesting features of Simple Vulnerability Manager is the ability to create and manage projects to clients who are being followed. These projects will be used to add personalized comments and screenshots that will serve as an individual test for each of the vulnerabilities that have been detected on the web and IP addresses.
+One of the most interesting features of Simple Vulnerability Manager is the ability to create and manage projects to clients. These projects will be used to add personalized comments and screenshots that will serve as an individual evidence for each of the vulnerabilities that have been detected on the web and IP addresses.
 
 
 # Installation
-It's very simple, download the installer from https://www.simplevulnerabilitymanager.com and follow the instructions. You do not have to configure anything to start using immediately.
+It's easy and simple, just download the installer from  https://www.simplevulnerabilitymanager.com and follow the instructions. You do not have to configure anything, so you can start using it immediately.
 
 
 # Screenshots
@@ -30,7 +29,7 @@ List of vulnerabilities available to add to the project.
 
 # Tools
 
-Simple Vulnerability Manager integrates with all the following external tools to be able to execute them quickly with a single click, which allows you to save time in the execution of the automated scans.
+Simple Vulnerability Manager integrates easily with the following list of external tools and It’s able to execute them quickly with a single click, allowing you to save time in the execution of the automated scans.
 
 **Web Scanner**
 
@@ -82,6 +81,7 @@ Simple Vulnerability Manager integrates with all the following external tools to
 
 Simple Vulnerability Manager was presented at the following Computer Security Conferences
 
+
 * [Ekoparty Security Conference](https://www.ekoparty.org) : Ekolabs [2016](https://twitter.com/SimpleVulnManag/status/792072988204134402)
 
 * [Andsec Security Conference](https://www.andsec.org) : [2017](https://twitter.com/SimpleVulnManag/status/871576216112963586)
@@ -109,7 +109,7 @@ Follow me on social networks to be aware of the news
 # License
 Only the scripts for Windows (.bat) and the scripts for Linux (.sh) are OpenSource with GPL license, the rest of the programs have their respective licenses.
 
-The executable "svm.exe" is a freeware license and should only be used for personal use. For use in companies, the **Pro** license must be purchased from SVM. More info to [contacto@simplevulnerabilitymanager.com] (mailto: contacto@simplevulnerabilitymanager.com) and at [www.SimpleVulnerabilityManager.com] (https://www.simplevulnerabilitymanager.com/)
+The executable "svm.exe" is a freeware license and should only be used for personal use. For use in companies, the ** Pro ** license must be purchased from SVM. More info to [contacto@simplevulnerabilitymanager.com] (mailto: contacto@simplevulnerabilitymanager.com) and at [www.SimpleVulnerabilityManager.com] (https://www.simplevulnerabilitymanager.com/)
 
 
 
