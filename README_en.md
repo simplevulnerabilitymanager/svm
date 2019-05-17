@@ -8,7 +8,7 @@
 # Description
 Simple Vulnerability Manager is the perfect tool for any vulnerability analyst.  Just a couple of clicks and it will be possible to carry out full analyzes on system’s the weaknesses and generate reports on them that will help to understand them and solve the different problems that these vulnerabilities may be causing.
 
-This application includes a database that contains the vast majority of vulnerabilities that a computer can suffer, organized in **Web Scanners**, **Service Scanners**, **Static Scanners** and **Mobile**. Within these sections, along with the relevant vulnerability, users can find a brief description that specifies what creates the problem, the impact it has on the system and the steps to be followed to solve it.
+This application includes a database that contains the most recognised vulnerabilities that a computer can suffer, organized in **Web Scanners**, **Service Scanners**, **Static Scanners** and **Mobile**. Within these sections, along with the relevant vulnerability, users can find a brief description that specifies what creates the problem, the impact it has on the system and the steps to be followed to solve it.
 
 
 One of the most interesting features of Simple Vulnerability Manager is the ability to create and manage projects to clients. These projects will be used to add personalized comments and screenshots that will serve as an individual evidence for each of the vulnerabilities that have been detected on the web and IP addresses.
