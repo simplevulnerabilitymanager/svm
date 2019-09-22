@@ -15,7 +15,7 @@ One of the most interesting features of Simple Vulnerability Manager is the abil
 
 
 # Installation
-It's easy and simple, just download the installer from  https://www.simplevulnerabilitymanager.com and follow the instructions. You do not have to configure anything, so you can start using it immediately.
+It's easy and simple, just download the installer from https://github.com/simplevulnerabilitymanager/svm/releases and follow the instructions. You do not have to configure anything, so you can start using it immediately.
 
 
 # Screenshots
