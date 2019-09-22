@@ -16,7 +16,7 @@ Una de las características más interesantes de Simple Vulnerability Manager es
 
 
 # Instalación
-Es muy simple, descarga el instalador desde https://www.simplevulnerabilitymanager.com y sigue las instrucciones. No tienes que configurar practicamente nada para que lo comiences a utilizar inmediatamente.
+Es muy simple, descarga el instalador en https://github.com/simplevulnerabilitymanager/svm/releases y sigue las instrucciones. No tienes que configurar practicamente nada para que lo comiences a utilizar inmediatamente.
 
 
 # Capturas de Pantalla
