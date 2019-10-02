@@ -76,15 +76,15 @@ set User-Agent=%User-Agent:'=%
 
 copy "%~dp0Login_fast.rb" "%Documentacion%Login_fast.rb"
 "%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C "%Documentacion%Login_fast.rb" %Server%:"/tmp/Login"
-"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "chmod 755 /tmp/Login"
+"%~dp0plink.exe" -no-antispoof -batch -ssh -P 22 -l %Username% -pw %Password% -C %Server% "chmod 755 /tmp/Login"
 
 echo Escaneando...
-"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "arachni --output-verbose --output-only-positives  --http-user-agent='%User-Agent%' --audit-links --audit-forms --audit-cookies --audit-headers --audit-jsons --audit-xmls --audit-ui-inputs --audit-ui-forms --checks=*   --plugin=login_script:script=/tmp/Login    --scope-exclude-pattern=%scope-exclude-pattern% --platforms=%plataform%  --report-save-path='/tmp/ArachniReport - %Timestamp%.afr' %URL%"
+"%~dp0plink.exe" -no-antispoof -batch -ssh -P 22 -l %Username% -pw %Password% -C %Server% "arachni --output-verbose --output-only-positives  --http-user-agent='%User-Agent%' --audit-links --audit-forms --audit-cookies --audit-headers --audit-jsons --audit-xmls --audit-ui-inputs --audit-ui-forms --checks=*   --plugin=login_script:script=/tmp/Login    --scope-exclude-pattern=%scope-exclude-pattern% --platforms=%plataform%  --report-save-path='/tmp/ArachniReport - %Timestamp%.afr' %URL%"
 
 echo Generando Reporte...
-"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "arachni_reporter '/tmp/ArachniReport - %Timestamp%.afr' --reporter=html:outfile='/tmp/ArachniReport - %Timestamp%.zip'"
+"%~dp0plink.exe" -no-antispoof -batch -ssh -P 22 -l %Username% -pw %Password% -C %Server% "arachni_reporter '/tmp/ArachniReport - %Timestamp%.afr' --reporter=html:outfile='/tmp/ArachniReport - %Timestamp%.zip'"
 "%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/ArachniReport - %Timestamp%.zip" "%Documentacion%\ArachniReport - %Timestamp%.zip"
-"%~dp0plink.exe" -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -fr '/tmp/Login' '/tmp/ArachniReport - %Timestamp%.zip' '/tmp/ArachniReport - %Timestamp%.afr'"
+"%~dp0plink.exe" -no-antispoof -batch -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -fr '/tmp/Login' '/tmp/ArachniReport - %Timestamp%.zip' '/tmp/ArachniReport - %Timestamp%.afr'"
 
 echo "%Documentacion%\ArachniReport - %Timestamp%.zip"
 pause

@@ -1,3 +1,20 @@
+Version: 2.0.4 - 
+Add - Main - Nuevo Lenguaje. Ruso. Gracias Alex por la ayuda en la traduccion. 
+Add - Main - Full Soporte para Unicode.
+Add - Main - Actualizacion automatica.
+Add - Main - El nombre del ejecutable (svm.exe) esta asociado al nombre del archivo svm.ini lo que posibilita tener una version Standalone y una Profesional al mismo tiempo.
+Add - Main - Se amplio la capacidad de colocar texto en los campos de IP, Web, Notas, Request y Responses.
+Add - Main - Nueva opcion en el menu Tools para actualizar todos los scripts y tool internas de SVM. Los scripts son Open Source.
+Update - Android - Se actualizo el link de descarga de Apktool a la version 2.4.0
+Update - Android - Se actualizo el link de descarga de Uber Apk Signer a la version 1.0.0
+Update - Android - Se actualizo el link de descarga de Jd-gui a la version 1.5.2
+BugFix - Main - Mejor manejo de la perdida de conexion con el servidor de SVM (SVM Pro) en Wine (Linux/MacOS)
+BugFix - Main - Se soluciono un problema de conexion con el Server de SVM (SVM Pro) en Wine (Linux/MacOS)
+BugFix - Main - Cuando se abria un Word y generaba el archivo temporal en ciertos casos se colgaba el programa.
+BugFix - Buscador - Ahora exporta en Excel las Vulnerabilidades Críticas.
+BugFix - Settings - Solucionado un problema en ciertos casos cuando se traia los datos de Qualys
+BugFix - Muchos Bugs Solucionados al pasar todos los controles para soportar UNICODE.
+
 Version: 2.0.3 - 03/02/2019
 Add - Nmap - Se puede lanzar un escaneo con Nmap a las Web/Dominios del Proyecto.
 Bugfix - Install Tools - Se mejoró la deteccion del entorno, por ejemplo en Debian 9 para instalar las tools.

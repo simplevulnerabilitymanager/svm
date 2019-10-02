@@ -51,7 +51,7 @@ apt-get install rubygems-integration -y
 apt-get install rubygems -y
 apt-get install python-setuptools -y
 apt-get install gcc -y
-apt-get install awk -y
+apt-get install gawk -y
 apt-get install original-awk -y
 apt-get install xmlstarlet -y
 apt-get install unzip -y
@@ -59,6 +59,7 @@ apt-get install unzip -y
 
 #Web Scan Tools (Arachni)
 if [ $TOOL == "Arachni" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== Arachni ====="
 	cd
 	apt-get install libsqlite3-dev -y
 	apt-get install libpq-dev -y
@@ -79,12 +80,14 @@ fi
 
 #Information Tools (Recon-ng)
 if [ $TOOL == "Recon-ng" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== Recon-ng ====="
 	cd
 	apt-get install dos2unix -y
 	apt-get install libxml2-dev -y
 	apt-get install libxslt1-dev -y
-	apt-get install zlib1g-dev -y	
+	apt-get install zlib1g-dev -y
 	git clone --depth 1 https://bitbucket.org/LaNMaSteR53/recon-ng
+	#git clone --depth 1 https://github.com/lanmaster53/recon-ng
 	if [ $? -ne 0 ] ; then
 		cd recon-ng
 		git pull
@@ -97,8 +100,10 @@ fi
 
 #Information Tools (EyeWitness)
 if [ $TOOL == "EyeWitness" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== EyeWitness ====="
 	cd
 	apt-get install python-levenshtein
+	pip install selenium==2.53.6
 	git clone --depth 1 https://github.com/ChrisTruncer/EyeWitness
 	if [ $? -ne 0 ] ; then
 		cd EyeWitness
@@ -109,12 +114,13 @@ if [ $TOOL == "EyeWitness" ] || [ $TOOL == "Todas" ] ; then
 		chmod 755 setup.sh
 		./setup.sh
 	fi
-	
+
 fi
 
 
 #Service Scan Tools (OpenVAS)
 if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== OpenVAS ====="
 	cd
 	apt-get install sqlite3 -y
 	apt-get install xsltproc -y
@@ -152,8 +158,8 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 			apt-get install openvas openvas-manager openvas-manager-common openvas-cli openvas-scanner libopenvas9 greenbone-security-assistant greenbone-security-assistant-common -y
 			dpkg --configure openvas
 			openvas-setup
-			openvasmd --create-user=admin --role=Admin
-			openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM
+			#openvasmd --create-user=admin --role=Admin
+			#openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM
 		fi
 	else
 		CODENAME=$(lsb_release -c | awk '{ print $2}')
@@ -172,8 +178,8 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 
 			apt-get install openvas9 -y
 			apt-get install greenbone-security-assistant9 -y
-			openvasmd --create-user=admin --role=Admin
-			openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM
+			#openvasmd --create-user=admin --role=Admin
+			#openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM
 		fi
 	fi
 
@@ -201,18 +207,25 @@ if [ $TOOL == "OpenVAS" ] || [ $TOOL == "Todas" ] ; then
 	/etc/init.d/openvas-gsa start	#Ubuntu
 	service openvas-scanner start
 	service openvas-manager start
+	openvas-start	#kali
+
+	#User y Password default SVM
+	openvasmd --create-user=admin --role=Admin
+	openvasmd --user=admin --new-password=OpenVAS	#Default password en SVM
 
 fi
 
 if [ $TOOL == "OpenVASPlugins" ] || [ $TOOL == "Todas" ] ; then
-
+	echo "===== OpenVASPlugins ====="
+	cd
 	greenbone-certdata-sync; greenbone-nvt-sync ; greenbone-scapdata-sync
 	openvas-nvt-sync ; openvas-scapdata-sync ; openvas-certdata-sync
-
+	openvas-feed-update
 fi
 
 #Service Scan Tools (NessusPlugins)
 if [ $TOOL == "NessusPlugins" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== NessusPlugins ====="
 	cd
 	/opt/nessus/sbin/nessuscli update --plugins-only
 fi
@@ -220,6 +233,7 @@ fi
 
 #Service Scan Tools (Nmap)
 if [ $TOOL == "Nmap" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== Nmap ====="
 	cd
 	apt-get install nmap -y
 	nmap --script-updatedb
@@ -228,6 +242,7 @@ fi
 
 #JAVA
 if [ $TOOL == "Java" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== Java ====="
 	apt-get install openjdk-9-jdk -y
 	if [ $? -ne 0 ] ; then
 		apt-get install openjdk-8-jdk -y
@@ -253,6 +268,7 @@ fi
 
 #Mobile Tools (AndroidSDK)
 if [ $TOOL == "AndroidSDK" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== AndroidSDK ====="
 	cd
 	apt-get install android-tools-adb -y
 
@@ -274,11 +290,12 @@ fi
 
 #Mobile Tools (ApkTools)
 if [ $TOOL == "ApkTools" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== ApkTools ====="
 	cd
 	mkdir apktool
-	cd apktool		 
+	cd apktool
 	wget https://bitbucket.org/iBotPeaches/apktool/downloads/ -O index.html
-	UltimaVersion=$(grep "apktool_" index.html  | head -1  | awk -F '"' '{print $2}' | awk -F '/' '{print $5}')
+	UltimaVersion=$(grep "apktool_" index.html	| head -1  | awk -F '"' '{print $2}' | awk -F '/' '{print $5}')
 	LinkDownload=$(grep "apktool_" index.html  | head -1  | awk -F '"' '{print $2}')
 	if [ ! -f $UltimaVersion ] ; then
 		wget https://bitbucket.org$LinkDownload -O $UltimaVersion
@@ -288,6 +305,7 @@ fi
 
 #Mobile Tools (Drozer)
 if [ $TOOL == "Drozer" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== Drozer ====="
 	cd
 	apt-get install protobuf-compiler -y
 	apt-get install dex2jar -y
@@ -313,6 +331,7 @@ fi
 
 #Mobile Tools (Enjarify)
 if [ $TOOL == "Enjarify" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== Enjarify ====="
 	cd
 	rm -fr enjarify #Opcional
 	git clone --depth 1 https://github.com/Storyyeller/enjarify
@@ -324,6 +343,7 @@ fi
 
 #Mobile Tools (Qark)
 if [ $TOOL == "Qark" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== Qark ====="
 	cd
 	rm -fr qark	#Opcional
 	git clone --depth 1 https://github.com/linkedin/qark
@@ -331,24 +351,25 @@ if [ $TOOL == "Qark" ] || [ $TOOL == "Todas" ] ; then
 		cd qark
 		git pull
 		pip install -r requirements.txt
-		
+
 		python ./setup.py  install
 	else
 		cd qark
-		
+
 		cd $HOME/qark/
 		wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O sdk-tools-linux-4333796.zip
 		unzip sdk-tools-linux-4333796.zip
 		echo y | tools/android update sdk --no-ui
-		
+
 		pip install -r requirements.txt
-		
+
 		python ./setup.py  install
 	fi
 fi
 
 #Mobile Tools (MobSF)
 if [ $TOOL == "MobSF" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== MobSF ====="
 	apt-get install libffi-dev -y
 	apt-get install libtiff5-dev -y
 	apt-get install libjpeg8-dev -y
@@ -365,6 +386,7 @@ if [ $TOOL == "MobSF" ] || [ $TOOL == "Todas" ] ; then
 	apt-get install libjpeg62-turbo-dev -y
 	apt-get install wkhtmltopdf -y
 	apt-get install python3-django-wkhtmltopdf -y
+	apt-get install python3-venv -y
 	pip3 install --upgrade scrapy
 	pip3 install --upgrade cryptography
 	pip3 install --upgrade cffi
@@ -391,6 +413,7 @@ fi
 
 #Mobile Tools (AndroBugs_Framework)
 if [ $TOOL == "AndroBugs_Framework" ] || [ $TOOL == "Todas" ] ; then
+	echo "===== AndroBugs_Framework ====="
 	cd
 	rm -fr AndroBugs_Framework	#Opcional
 	git clone --depth 1 https://github.com/AndroBugs/AndroBugs_Framework
@@ -403,5 +426,5 @@ fi
 #Restore
 #echo 'debconf debconf/frontend select Dialog' | debconf-set-selections
 echo "###################"
-echo "      Termino"
+echo "		Termino"
 echo "###################"
