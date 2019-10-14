@@ -56,5 +56,6 @@ pause
 EXIT /B 0
 
 :actualizar
-"%~dp0curl.exe" -o %1 https://raw.githubusercontent.com/simplevulnerabilitymanager/svm/master/%1
+echo Actualizando %1...
+"%~dp0curl.exe" -s -o %1 https://raw.githubusercontent.com/simplevulnerabilitymanager/svm/master/%1
 EXIT /B 0
