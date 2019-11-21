@@ -2,7 +2,7 @@
 
 # Simple Vulnerability Manager
 
-[![](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/tag/v2.0.3)
+[![](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/tag/v2.1.0)
 
 
 # описание
@@ -111,5 +111,7 @@ Simple Vulnerability Manager был представлен на следующи
 
 Исполняемый файл "svm.exe" является бесплатной лицензией и должен использоваться только для личного использования. Для использования в компаниях лицензия **Pro** должна быть приобретена у SVM. Более подробную информацию можно получить по адресу [contacto@simplevulnerabilitymanager.com] (mailto: contacto@simplevulnerabilitymanager.com) и по адресу [www.SimpleVulnerabilityManager.com] (https://www.simplevulnerabilitymanager.com/).
 
+# Author
+Ulises Cuñe [www.ulises2k.com.ar](https://www.ulises2k.com.ar)
 
 
