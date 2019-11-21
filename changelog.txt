@@ -1,7 +1,7 @@
-Version: 2.0.4 - 
-Add - Main - Nuevo Lenguaje. Ruso. Gracias Alex por la ayuda en la traduccion. 
+Version: 2.1.0 - 
 Add - Main - Full Soporte para Unicode.
-Add - Main - Actualizacion automatica.
+Add - Main - Nuevo Lenguaje. Ruso. Gracias Alex por la ayuda en la traduccion. 
+Add - Main - Deteccion de nueva version y descarga.
 Add - Main - El nombre del ejecutable (svm.exe) esta asociado al nombre del archivo svm.ini lo que posibilita tener una version Standalone y una Profesional al mismo tiempo.
 Add - Main - Se amplio la capacidad de colocar texto en los campos de IP, Web, Notas, Request y Responses.
 Add - Main - Nueva opcion en el menu Tools para actualizar todos los scripts y tool internas de SVM. Los scripts son Open Source.
