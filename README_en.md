@@ -2,7 +2,7 @@
 
 # Simple Vulnerability Manager
 
-[![](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/tag/v2.0.3)
+[![](https://img.shields.io/github/release/simplevulnerabilitymanager/svm.svg)](https://github.com/simplevulnerabilitymanager/svm/releases/tag/v2.1.0)
 
 
 # Description
@@ -111,5 +111,6 @@ Only the scripts for Windows (.bat) and the scripts for Linux (.sh) are OpenSour
 
 The executable "svm.exe" is a freeware license and should only be used for personal use. For use in companies, the **Pro** license must be purchased from SVM. More info to [contacto@simplevulnerabilitymanager.com](mailto:contacto@simplevulnerabilitymanager.com) and at [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
 
-
+# Author
+Ulises Cuñe [www.ulises2k.com.ar](https://www.ulises2k.com.ar)
 
