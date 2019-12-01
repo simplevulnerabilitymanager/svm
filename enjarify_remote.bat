@@ -19,9 +19,9 @@ set Documentacion="%Documentacion%\EnjarifyReport - %FileApk%_%Timestamp%.jar"
 
 rem $git clone https://github.com/google/enjarify
 "%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C "%PathAPK%" %Server%:"/tmp/%FileApk%_%Timestamp%.apk"
-"%~dp0plink.exe" -no-antispoof -batch -ssh -P 22 -l %Username% -pw %Password% -C %Server% "cd '%DirApp%' ; chmod 755 ./enjarify.sh  ; ./enjarify.sh -o '/tmp/EnjarifyReport - %FileApk%_%Timestamp%.jar' '/tmp/%FileApk%_%Timestamp%.apk'"
+"%~dp0plink.exe" -no-antispoof -ssh -P 22 -l %Username% -pw %Password% -C %Server% "cd '%DirApp%' ; chmod 755 ./enjarify.sh  ; ./enjarify.sh -o '/tmp/EnjarifyReport - %FileApk%_%Timestamp%.jar' '/tmp/%FileApk%_%Timestamp%.apk'"
 "%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/EnjarifyReport - %FileApk%_%Timestamp%.jar" %Documentacion%
-"%~dp0plink.exe" -no-antispoof -batch -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/EnjarifyReport - %FileApk%_%Timestamp%.jar' '/tmp/%FileApk%_%Timestamp%.apk'"
+"%~dp0plink.exe" -no-antispoof -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -f '/tmp/EnjarifyReport - %FileApk%_%Timestamp%.jar' '/tmp/%FileApk%_%Timestamp%.apk'"
 
 echo %Documentacion%
 pause

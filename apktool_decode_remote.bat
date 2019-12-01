@@ -22,10 +22,10 @@ set Documentacion="%Documentacion%\ApktoolReport - %FileApk%_%Timestamp%.tar.gz"
 
 rem $wget https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.1.0.jar
 "%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C "%PathAPK%" %Server%:"/tmp/%FileApk%_%Timestamp%.apk"
-"%~dp0plink.exe" -no-antispoof -batch -ssh -P 22 -l %Username% -pw %Password% -C %Server% "cd /tmp ; %JAVA% -jar '%AppExe%' d '/tmp/%FileApk%_%Timestamp%.apk'"
-"%~dp0plink.exe" -no-antispoof -batch -ssh -P 22 -l %Username% -pw %Password% -C %Server% "cd /tmp ; tar -cvzf 'ApktoolReport - %FileApk%_%Timestamp%.tar.gz' '%FileApk%_%Timestamp%.apk' '%FileApk%_%Timestamp%'"
+"%~dp0plink.exe" -no-antispoof -ssh -P 22 -l %Username% -pw %Password% -C %Server% "cd /tmp ; %JAVA% -jar '%AppExe%' d '/tmp/%FileApk%_%Timestamp%.apk'"
+"%~dp0plink.exe" -no-antispoof -ssh -P 22 -l %Username% -pw %Password% -C %Server% "cd /tmp ; tar -cvzf 'ApktoolReport - %FileApk%_%Timestamp%.tar.gz' '%FileApk%_%Timestamp%.apk' '%FileApk%_%Timestamp%'"
 "%~dp0pscp.exe" -P 22 -l %Username% -pw %Password% -C %Server%:"/tmp/ApktoolReport - %FileApk%_%Timestamp%.tar.gz" %Documentacion%
-"%~dp0plink.exe" -no-antispoof -batch -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -fr '/tmp/ApktoolReport - %FileApk%_%Timestamp%.tar.gz' '/tmp/%FileApk%_%Timestamp%.apk' /tmp/1.apk"
+"%~dp0plink.exe" -no-antispoof -ssh -P 22 -l %Username% -pw %Password% -C %Server% "rm -fr '/tmp/ApktoolReport - %FileApk%_%Timestamp%.tar.gz' '/tmp/%FileApk%_%Timestamp%.apk' /tmp/1.apk"
 
 echo %Documentacion%
 pause

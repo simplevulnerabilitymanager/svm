@@ -1,4 +1,9 @@
-Version: 2.1.0 - 
+Version: 2.1.1 - 1/12/2019
+BugFix - ServicesScan - Se arreglo el boton del Toolbar para cambiar el nombre de la vulnerabilidad.
+BugFix - Fortify - Se arreglo el boton del Toolbar para cambiar el nombre de la vulnerabilidad.
+BugFix - Algunos problemas esteticos mejorados
+
+Version: 2.1.0 - 21/11/2019
 Add - Main - Full Soporte para Unicode.
 Add - Main - Nuevo Lenguaje. Ruso. Gracias Alex por la ayuda en la traduccion. 
 Add - Main - Deteccion de nueva version y descarga.
