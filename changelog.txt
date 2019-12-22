@@ -1,3 +1,7 @@
+Version: 2.1.2 - 21/12/2019
+Add - Se agregado Drag And Drop para agregar las imagenes en la evidencia y el screenshot del Proyecto.
+BugFix - Arreglado al generar el Reporte en Word si el nombre del proyecto tenia un caracter no permitido como nombre de archivo valido.
+
 Version: 2.1.1 - 1/12/2019
 BugFix - ServicesScan - Se arreglo el boton del Toolbar para cambiar el nombre de la vulnerabilidad.
 BugFix - Fortify - Se arreglo el boton del Toolbar para cambiar el nombre de la vulnerabilidad.
