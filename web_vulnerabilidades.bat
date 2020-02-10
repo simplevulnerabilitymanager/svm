@@ -26,7 +26,7 @@ set Proyecto=%Proyecto:"=%
 echo WebSVM - Actualizando Cantidad Vulnerabilidades encontradas...
 
 rem Login
-"%~dp0curl.exe" -s -k --compressed -D "%TEMP%\web_vulnerabilidades_auth_%Timestamp%.txt" --data-urlencode "username=%Username%" --data-urlencode "password=%Password%" "%WebSVM%/login.php" >NUL
+"%~dp0curl.exe" -s -k --compressed -D "%TEMP%\web_vulnerabilidades_auth_%Timestamp%.txt" --data "username=%Username%" --data "password=%Password%" "%WebSVM%/login.php" >NUL
 
 rem Proyectos Vulnerabilidades
 "%~dp0curl.exe" -s -k --compressed -b "%TEMP%\web_vulnerabilidades_auth_%Timestamp%.txt" --data "webid=%WebID%" --data "vulnerabilidades=%Vulnerabilidades%" --data "solucionadas=%Solucionadas%" "%WebSVM%/proyectos_vulnerabilidades.php" -o "%TEMP%\web_vulnerabilidades_vulnerabilidades_%Timestamp%.txt"

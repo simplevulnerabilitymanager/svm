@@ -15,7 +15,7 @@ if %UsoProxy% EQU 1 ( set Proxy=--proxy %ProxyIP%:%ProxyPort% --proxy-anyauth --
 if %UsoProxy% EQU 0 ( set Proxy= )
 
 rem Login
-"%~dp0curl.exe" -s %Proxy% --compressed -H "X-Requested-With: Curl SVM" -D "%TEMP%\qualys_get_scanner_appliances_auth_%Timestamp%.txt" --data "action=login" --data-urlencode "username=%Username%" --data-urlencode "password=%Password%" "https://qualysapi.qualys.com/api/2.0/fo/session/" -o "%TEMP%\qualys_get_scanner_appliances_login_%Timestamp%.txt" 2> NUL
+"%~dp0curl.exe" -s %Proxy% --compressed -H "X-Requested-With: Curl SVM" -D "%TEMP%\qualys_get_scanner_appliances_auth_%Timestamp%.txt" --data "action=login" --data "username=%Username%" --data "password=%Password%" "https://qualysapi.qualys.com/api/2.0/fo/session/" -o "%TEMP%\qualys_get_scanner_appliances_login_%Timestamp%.txt" 2> NUL
 findstr.exe /C:"Bad Login/Password" "%TEMP%\qualys_get_scanner_appliances_login_%Timestamp%.txt" > NUL
 if %ERRORLEVEL% EQU 0 ( echo Mal Usuario/Contraseña && pause && exit )
 

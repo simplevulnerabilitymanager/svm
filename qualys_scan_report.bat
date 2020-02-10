@@ -30,7 +30,7 @@ set Documentacion=%Documentacion:"=%
 set Documentacion="%Documentacion%\QualysScanReport - %Timestamp%.%TypeReport%"
 
 echo Generando Reporte...
-"%~dp0curl.exe" -s %Proxy% --compressed -H "X-Requested-With: Curl Sample" -D "%TEMP%\qualys_scan_report_auth_%Timestamp%.txt" -d "action=login&username=%Username%&password=%Password%" "https://qualysapi.qualys.com/api/2.0/fo/session/" -o "%TEMP%\qualys_scan_report_login_%Timestamp%.txt"
+"%~dp0curl.exe" -s %Proxy% --compressed -H "X-Requested-With: Curl Sample" -D "%TEMP%\qualys_scan_report_auth_%Timestamp%.txt" --data "action=login" --data "username=%Username%" --data "password=%Password%" "https://qualysapi.qualys.com/api/2.0/fo/session/" -o "%TEMP%\qualys_scan_report_login_%Timestamp%.txt"
 findstr.exe /C:"Bad Login/Password" "%TEMP%\qualys_scan_report_login_%Timestamp%.txt" > NUL
 if %ERRORLEVEL% EQU 0 ( echo Mal Usuario/Contraseña && pause && exit )
 
@@ -40,7 +40,7 @@ if %ERRORLEVEL% EQU 0 ( echo Qualys Planned Maintenance && pause && exit )
 findstr.exe /C:"This API cannot be run again" "%TEMP%\qualys_scan_report_login_%Timestamp%.txt" > NUL
 if %ERRORLEVEL% EQU 0 ( echo This API cannot be run again && pause && exit )
 
-"%~dp0curl.exe" -s %Proxy% -H "X-Requested-With: Curl Sample" -b "%TEMP%\qualys_scan_report_auth_%Timestamp%.txt" -d "action=launch&ips=%IP%&echo_request=0&template_id=%TemplateId%&output_format=%TypeReport%" --data-urlencode "report_title=%Proyecto%"  "https://qualysapi.qualys.com/api/2.0/fo/report/" | "%~dp0xml.exe" sel -t -v "/SIMPLE_RETURN/RESPONSE/ITEM_LIST/ITEM/VALUE" > "%TEMP%\qualys_scan_report_id_%Timestamp%.txt" 2>NUL
+"%~dp0curl.exe" -s %Proxy% -H "X-Requested-With: Curl Sample" -b "%TEMP%\qualys_scan_report_auth_%Timestamp%.txt" --data-urlencode "action=launch" --data-urlencode "ips=%IP%" --data-urlencode "echo_request=0" --data-urlencode "template_id=%TemplateId%" --data-urlencode "output_format=%TypeReport%" --data-urlencode "report_title=%Proyecto%"  "https://qualysapi.qualys.com/api/2.0/fo/report/" | "%~dp0xml.exe" sel -t -v "/SIMPLE_RETURN/RESPONSE/ITEM_LIST/ITEM/VALUE" > "%TEMP%\qualys_scan_report_id_%Timestamp%.txt" 2>NUL
 ping -n 11 127.0.0.1 > NUL
 set /P ID=<"%TEMP%\qualys_scan_report_id_%Timestamp%.txt"
 
