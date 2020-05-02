@@ -1,3 +1,6 @@
+Version: 2.1.4 - 
+Bugfix - Habilitar el boton de subir vulnerabilidades.
+
 Version: 2.1.3 - 
 BugFix - La version del ejecutable en 2.1.3
 
