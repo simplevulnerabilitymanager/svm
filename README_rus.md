@@ -103,13 +103,13 @@ Simple Vulnerability Manager был представлен на следующи
 
 * GitHub: ![Watching](watch_git.jpg)
 
-* Homepage: [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
+* Homepage: [SimpleVulnerabilityManager.com](https://simplevulnerabilitymanager.com/)
 
 
 # лицензия
 Только сценарии для Windows (.bat) и сценарии для Linux (.sh) являются OpenSource с лицензией GPL, остальные программы имеют соответствующие лицензии.
 
-Исполняемый файл "svm.exe" является бесплатной лицензией и должен использоваться только для личного использования. Для использования в компаниях лицензия **Pro** должна быть приобретена у SVM. Более подробную информацию можно получить по адресу [contacto@simplevulnerabilitymanager.com] (mailto: contacto@simplevulnerabilitymanager.com) и по адресу [www.SimpleVulnerabilityManager.com] (https://www.simplevulnerabilitymanager.com/).
+Исполняемый файл "svm.exe" является бесплатной лицензией и должен использоваться только для личного использования. Для использования в компаниях лицензия **Pro** должна быть приобретена у SVM. Более подробную информацию можно получить по адресу [contacto@simplevulnerabilitymanager.com] (mailto: contacto@simplevulnerabilitymanager.com) и по адресу [SimpleVulnerabilityManager.com] (https://simplevulnerabilitymanager.com/).
 
 # Author
 Ulises Cuñe [www.ulises2k.com.ar](https://www.ulises2k.com.ar)
