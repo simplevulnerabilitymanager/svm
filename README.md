@@ -103,13 +103,13 @@ Sígueme en las redes sociales para estar enterado de las novedades
 
 * GitHub: ![Watching](watch_git.jpg)
 
-* Homepage: [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
+* Homepage: [SimpleVulnerabilityManager.com](https://simplevulnerabilitymanager.com/)
 
 
 # Licencia
 Solo los scripts para Windows (.bat) y los script para Linux (.sh) son OpenSource con licencia GPL, el resto de los programas tienen sus respectivas licencia.
 
-El ejecutable "svm.exe" es de licencia freeware y solo deberia utilizarse para uso personal. Para uso en empresas debe adquirirse la licencia **Pro** de SVM. Mas info a [contacto@simplevulnerabilitymanager.com](mailto:contacto@simplevulnerabilitymanager.com) y en [www.SimpleVulnerabilityManager.com](https://www.simplevulnerabilitymanager.com/)
+El ejecutable "svm.exe" es de licencia freeware y solo deberia utilizarse para uso personal. Para uso en empresas debe adquirirse la licencia **Pro** de SVM. Mas info a [contacto@simplevulnerabilitymanager.com](mailto:contacto@simplevulnerabilitymanager.com) y en [SimpleVulnerabilityManager.com](https://simplevulnerabilitymanager.com/)
 
 # Autor
 Ulises Cuñe [www.ulises2k.com.ar](https://www.ulises2k.com.ar)
