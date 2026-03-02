@@ -1,0 +1,19 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\CLSID\{00024500-0000-0000-C000-000000000046}] @="Microsoft Excel Application"
+
+[HKEY_CLASSES_ROOT\CLSID\{00024500-0000-0000-C000-000000000046}\Implemented Categories]
+
+[HKEY_CLASSES_ROOT\CLSID\{00024500-0000-0000-C000-000000000046}\Implemented Categories\{000C0118-0000-0000-C000-000000000046}] @=""
+
+[HKEY_CLASSES_ROOT\CLSID\{00024500-0000-0000-C000-000000000046}\InprocHandler32] @="ole32.dll"
+
+[HKEY_CLASSES_ROOT\CLSID\{00024500-0000-0000-C000-000000000046}\InprocServer32] "Assembly"="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71E9BCE111E9429C" "Class"="Microsoft.Office.Interop.Excel.ApplicationClass" "RuntimeVersion"="v2.0.50727"
+
+[HKEY_CLASSES_ROOT\CLSID\{00024500-0000-0000-C000-000000000046}\InprocServer32\15.0.0.0] "Class"="Microsoft.Office.Interop.Excel.ApplicationClass" "Assembly"="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71E9BCE111E9429C" "RuntimeVersion"="v2.0.50727"
+
+[HKEY_CLASSES_ROOT\CLSID\{00024500-0000-0000-C000-000000000046}\LocalServer32] @="C:\\Program Files\\Microsoft Office\\Root\\Office16\\EXCEL.EXE /automation"
+
+[HKEY_CLASSES_ROOT\CLSID\{00024500-0000-0000-C000-000000000046}\ProgID] @="Excel.Application.16"
+
+[HKEY_CLASSES_ROOT\CLSID\{00024500-0000-0000-C000-000000000046}\VersionIndependentProgID] @="Excel.Application"
