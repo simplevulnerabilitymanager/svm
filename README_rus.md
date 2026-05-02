@@ -105,6 +105,7 @@ Simple Vulnerability Manager был представлен на следующи
 
 * Homepage: [SimpleVulnerabilityManager.com](https://simplevulnerabilitymanager.com/)
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/simplevulnerabilitymanager/svm)
 
 # лицензия
 Только сценарии для Windows (.bat) и сценарии для Linux (.sh) являются OpenSource с лицензией GPL, остальные программы имеют соответствующие лицензии.
