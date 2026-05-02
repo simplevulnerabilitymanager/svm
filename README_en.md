@@ -105,6 +105,7 @@ Follow me on social networks to be aware of the news
 
 * Homepage: [SimpleVulnerabilityManager.com](https://simplevulnerabilitymanager.com/)
 
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/simplevulnerabilitymanager/svm)
 
 # License
 Only the scripts for Windows (.bat) and the scripts for Linux (.sh) are OpenSource with GPL license, the rest of the programs have their respective licenses.
